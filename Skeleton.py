@@ -4,7 +4,16 @@ from blessed import Terminal
 import sys
 
 def rolldice(dice1, dice2):
-    """rolls two dice"""
+    """Rolls two dice
+    
+    Args:
+        dice1(int): The number you rolled on dice 1 that is 1-6.
+        dice2(int): The number you rolled on dice 2 that is 1-6.
+        
+    Side effect:
+        Prints out the number rolled on dice 1 and dice 2 to the terminal. 
+    
+    """
     pass
 def get_move(game, player):
     """asks the player what chips they want to choose"""
