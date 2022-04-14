@@ -50,6 +50,9 @@ TERM = Terminal()
 P1COLOR = TERM.green3
 P2COLOR = TERM.red3
 
+PAUSE = 0.2
+STORES = [10, 20]
+
 
     
 
