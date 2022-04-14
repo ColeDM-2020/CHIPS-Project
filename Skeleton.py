@@ -3,8 +3,17 @@ from argparse import ArgumentParser
 from blessed import Terminal
 import sys
 
-def rolldice(dice1, dice2)
-""""rolls two dice"""
+def rolldice(dice1, dice2):
+    """Rolls the dice for the player.
+
+    Args:
+        dice1 (int): The number the player rolls on dice 1 between 1-6.
+        dice2 (int): The number the player rolls on dice 2 between 1-6.
+        
+    Side effect:
+        Prints out the numbers rolled on the dice to the terminal. 
+    """
+    pass
 
 def get_move(game, player):
     """asks the player what chips they want to choose"""
@@ -15,13 +24,13 @@ class Chips:
         
     def valid_move():
         """This method checks whether a player is allowed to play from a particular pit.
-"""    
+        """    
     def play_round():
     """This method manages one round of game play. It initializes the 
       board for the new round, prints the board, manages turns until one player win"""   
      
-    def game():
-        
+    def game()
+    
 #####
 # Board Setup
 #####
