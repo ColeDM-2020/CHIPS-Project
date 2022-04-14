@@ -3,6 +3,22 @@ from argparse import ArgumentParser
 from blessed import Terminal
 import sys
 
+#####
+# Board Setup
+#####
+
+TERM = Terminal()
+
+P1COLOR = TERM.green3
+P2COLOR = TERM.red3
+
+TEMPLATE = f"""{TERM.home+TERM.clear}\
+<SP> <NAME0>
+<SP> <NAME1>
+"""
+
+
+
 def rolldice(dice1, dice2):
     """Rolls the dice for the player.
 
@@ -32,21 +48,10 @@ class Chips:
         pass
     def game():
         pass
-#####
-# Board Setup
-#####
-
-TERM = Terminal()
-
-P1COLOR = TERM.green3
-P2COLOR = TERM.red3
-
-TEMPLATE = f"""{TERM.home+TERM.clear}\
-    <SP>
-    """
-
-
     
+    
+    
+      
 class GameState:
     
 
