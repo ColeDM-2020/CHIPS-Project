@@ -3,9 +3,16 @@ from argparse import ArgumentParser
 from blessed import Terminal
 import sys
 
-<<<<<<< HEAD
-def rolldice(dice1, dice2)
-""""rolls two dice"""
+def rolldice(dice1, dice2):
+    """Rolls the dice for the player.
+
+    Args:
+        dice1 (int): The number the player rolls on dice 1 between 1-6.
+        dice2 (int): The number the player rolls on dice 2 between 1-6.
+        
+    Side effect:
+        Prints out the numbers rolled on the dice to the terminal. 
+    """
 
 def get_move(game, player):
     """asks the player what chips they want to choose"""
@@ -22,8 +29,6 @@ class Chips:
       board for the new round, prints the board, manages turns until one player win"""   
      
     def game()
-=======
->>>>>>> a37f8888a16bf63b4424ac808d9b7a424e96034c
 #####
 # Board Setup
 #####
@@ -34,8 +39,6 @@ P1COLOR = TERM.green3
 P2COLOR = TERM.red3
 
 
-<<<<<<< HEAD
-=======
 def rolldice(dice1, dice2): 
     """"
     rolls two dice
@@ -61,15 +64,12 @@ class Player:
     
     def valid_move():
         pass
->>>>>>> a37f8888a16bf63b4424ac808d9b7a424e96034c
     
 class GameState:
     
 
 
 
-<<<<<<< HEAD
-=======
 #Possible if name == main statement    
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
@@ -81,4 +81,3 @@ if __name__ == "__main__":
     game = (args.name0, args.name1)
     game.()
     
->>>>>>> a37f8888a16bf63b4424ac808d9b7a424e96034c
