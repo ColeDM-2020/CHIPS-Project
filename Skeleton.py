@@ -24,17 +24,17 @@ def get_move(game, player):
     pass
 
 class Chips:
-    """check if the dice value matches the values of get_move"""
-    def__init__():
+    """check if the dice value matches the values of get_move
+    """
+    def __init__(self):
         pass
 
 class Player:
     def __init__(self):
         pass
+    
     def turn():
         pass
-
-
     
     def valid_move():
         pass
@@ -54,5 +54,4 @@ if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
     game = (args.name0, args.name1)
     game.()
-
-
+    
