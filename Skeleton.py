@@ -46,6 +46,6 @@ if __name__ == "__main__":
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
     game = (args.name0, args.name1)
-    game.()
+    game.dbos()
 
 
