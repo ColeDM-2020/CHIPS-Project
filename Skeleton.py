@@ -3,6 +3,20 @@ from argparse import ArgumentParser
 from blessed import Terminal
 import sys
 
+TERM = Terminal()
+
+P0COLOR = TERM.green3
+P1COLOR = TERM.red3
+
+SLOT = "{:>2}"
+TEMPLATE = f"""{TERM.home+TERM.clear}\
+<SP> {P0COLOR} <NAME0> \u2192 {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
+<SP> {P1COLOR} <NAME1> \u2192 {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
+{TERM.normal}"""
+
+PAUSE = 0.2
+STORES = [10, 20]
+
 def rolldice(dice1, dice2):
     """"rolls two dice
     
@@ -24,7 +38,7 @@ class Chips:
         pass
     def valid_move():
         """This method checks whether a player is allowed to play from a particular pit.
-"""
+        """
         pass
     def play_round():
         """This method manages one round of game play. It initializes the 
@@ -39,31 +53,18 @@ class Chips:
     def score():
         """calculate player's score"""
         pass
+    def play_again():
+        """Ask if they want to play another round"""
+        pass
+    def print_board():
+        """Prints the board"""
+        pass
+    def print_winner():
+        "Prints the winnner"
+        pass
     
-    
-#####
-# Board Setup
-#####
-
-TERM = Terminal()
-
-P0COLOR = TERM.green3
-P1COLOR = TERM.red3
-
-SLOT = "{:>2}"
-TEMPLATE = f"""{TERM.home+TERM.clear}\
-<SP> {P0COLOR} <NAME0> \u2192 {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
-<SP> {P1COLOR} <NAME1> \u2192 {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
-{TERM.normal}"""
-
-PAUSE = 0.2
-STORES = [10, 20]
-
-
-    
-
-    
-
+def parse_args(arg):
+    pass
 
 
 #Possible if name == main statement    
