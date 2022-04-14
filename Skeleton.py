@@ -56,6 +56,9 @@ TEMPLATE = f"""{TERM.home+TERM.clear}\
 <SP> {P1COLOR} <NAME1> \u2192 {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
 {TERM.normal}"""
 
+PAUSE = 0.2
+STORES = [10, 20]
+
 
     
 #Possible if name == main statement    
