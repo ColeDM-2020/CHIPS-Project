@@ -12,6 +12,10 @@ TERM = Terminal()
 P1COLOR = TERM.green3
 P2COLOR = TERM.red3
 
+TEMPLATE = f"""{TERM.home+TERM.clear}\
+    <SP>
+    """
+
 
 def rolldice(dice1, dice2): 
     """"
