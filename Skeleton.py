@@ -3,12 +3,20 @@ from argparse import ArgumentParser
 from blessed import Terminal
 import sys
 
-def rolldice(dice1, dice2)
-""""rolls two dice"""
-
+def rolldice(dice1, dice2):
+    """"rolls two dice
+    
+    Args: 
+        dice1(int): The number that is rolled on dice 1 that is 1-6.
+        dice2(int): The number that is rolled on dice 2 that is 1-6.
+    
+    Side effect:
+        Prints out the numbers rolled on the dice to the terminal. 
+    """
+    pass
 def get_move(game, player):
     """asks the player what chips they want to choose"""
-    
+    pass
 class Chips:
     """check if the dice value matches the values of get_move"""
     def __init__():
