@@ -45,6 +45,7 @@ class Chips:
 # Board Setup
 #####
 
+
 TERM = Terminal()
 
 P0COLOR = TERM.green3
