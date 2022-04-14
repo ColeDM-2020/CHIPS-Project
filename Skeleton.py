@@ -24,7 +24,7 @@ class Chips:
         pass
     def valid_move():
         """This method checks whether a player is allowed to play from a particular pit.
-"""
+        """
         pass
     def play_round():
         """This method manages one round of game play. It initializes the 
@@ -49,8 +49,6 @@ TEMPLATE = f"""{TERM.home+TERM.clear}\
     
 class GameState:
     
-
-
 
 #Possible if name == main statement    
 if __name__ == "__main__":
