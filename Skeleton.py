@@ -1,7 +1,17 @@
+#Setting Board as a Global Variable
 from argparse import ArgumentParser
 from blessed import Terminal
 import sys
 
+def rolldice(dice1, dice2)
+""""rolls two dice"""
+
+def get_move(game, player):
+    """asks the player what chips they want to choose"""
+    
+class Chips:
+    """check if the dice value matches the values of get_move"""
+    def__init__():
 #####
 # Board Setup
 #####
@@ -11,6 +21,14 @@ class Player:
         pass
     def turn():
         pass
+
+
+    
+    def valid_move():
+        pass
+    
+class GameState:
+    
 
 
 
@@ -25,5 +43,4 @@ if __name__ == "__main__":
     game = (args.name0, args.name1)
     game.()
 
-    
-    
+
