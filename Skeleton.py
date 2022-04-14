@@ -3,6 +3,27 @@ from argparse import ArgumentParser
 from blessed import Terminal
 import sys
 
+<<<<<<< HEAD
+def rolldice(dice1, dice2)
+""""rolls two dice"""
+
+def get_move(game, player):
+    """asks the player what chips they want to choose"""
+    
+class Chips:
+    """check if the dice value matches the values of get_move"""
+    def__init__():
+        
+    def valid_move():
+        """This method checks whether a player is allowed to play from a particular pit.
+"""    
+    def play_round()
+    """This method manages one round of game play. It initializes the 
+      board for the new round, prints the board, manages turns until one player win"""   
+     
+    def game()
+=======
+>>>>>>> a37f8888a16bf63b4424ac808d9b7a424e96034c
 #####
 # Board Setup
 #####
@@ -17,6 +38,8 @@ TEMPLATE = f"""{TERM.home+TERM.clear}\
     """
 
 
+<<<<<<< HEAD
+=======
 def rolldice(dice1, dice2): 
     """"
     rolls two dice
@@ -42,12 +65,15 @@ class Player:
     
     def valid_move():
         pass
+>>>>>>> a37f8888a16bf63b4424ac808d9b7a424e96034c
     
 class GameState:
     
 
 
 
+<<<<<<< HEAD
+=======
 #Possible if name == main statement    
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
@@ -59,3 +85,4 @@ if __name__ == "__main__":
     game = (args.name0, args.name1)
     game.()
     
+>>>>>>> a37f8888a16bf63b4424ac808d9b7a424e96034c
