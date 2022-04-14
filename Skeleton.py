@@ -47,8 +47,8 @@ class Chips:
 
 TERM = Terminal()
 
-P1COLOR = TERM.green3
-P2COLOR = TERM.red3
+P0COLOR = TERM.green3
+P1COLOR = TERM.red3
 
 SLOT = "{:>2}"
 TEMPLATE = f"""{TERM.home+TERM.clear}\
