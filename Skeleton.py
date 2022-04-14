@@ -16,6 +16,11 @@ class Chips:
 # Board Setup
 #####
 
+TERM = Terminal()
+
+P1COLOR = TERM.green3
+P2COLOR = TERM.red3
+
 class Player:
     def __init__(self):
         pass
