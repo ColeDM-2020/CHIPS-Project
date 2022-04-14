@@ -60,9 +60,14 @@ class Chips:
     def play_again():
         """Ask if they want to play another round"""
         pass
-    def print_board():
+    def print_board(self, pause=PAUSE):
         """Prints the board"""
-        pass
+        template = (TEMPLATE
+                .replace("<NAME0>", self.names[0])
+                .replace("<NAME1>", self.names[1])
+                .replace("<SP>", " "*len(self.names[1])))
+        sleep(pause)
+        
     def print_winner():
         "Prints the winnner"
         pass
