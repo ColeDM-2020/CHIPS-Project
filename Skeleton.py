@@ -50,6 +50,12 @@ TERM = Terminal()
 P1COLOR = TERM.green3
 P2COLOR = TERM.red3
 
+SLOT = "{:>2}"
+TEMPLATE = f"""{TERM.home+TERM.clear}\
+<SP> {P0COLOR} <NAME0> \u2192 {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
+<SP> {P1COLOR} <NAME1> \u2192 {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
+{TERM.normal}"""
+
 PAUSE = 0.2
 STORES = [10, 20]
 
