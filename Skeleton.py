@@ -15,6 +15,7 @@ P2COLOR = TERM.red3
 TEMPLATE = f"""{TERM.home+TERM.clear}\
 <SP> <NAME0>
 <SP> <NAME1>
+
 """
 
 
