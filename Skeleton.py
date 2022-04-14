@@ -17,6 +17,7 @@ def rolldice(dice1, dice2):
 def get_move(game, player):
     """asks the player what chips they want to choose"""
     pass
+
 class Chips:
     """check if the dice value matches the values of get_move"""
     def __init__():
@@ -31,6 +32,15 @@ class Chips:
         pass
     def game():
         pass
+    
+    def game_over():
+        """Determine whether a round is over"""
+        pass
+    def score():
+        """calculate player's score"""
+        pass
+    
+    
 #####
 # Board Setup
 #####
@@ -42,7 +52,7 @@ P2COLOR = TERM.red3
 
 
     
-class GameState:
+
     
 
 
