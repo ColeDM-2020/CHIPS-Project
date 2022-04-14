@@ -2,6 +2,7 @@
 from argparse import ArgumentParser
 from blessed import Terminal
 import sys
+from time import sleep
 
 TERM = Terminal()
 
@@ -53,6 +54,9 @@ class Chips:
     def score():
         """calculate player's score"""
         pass
+    def play():
+        """Manage game play
+        Ask if they want to play again and call play_again()"""
     def play_again():
         """Ask if they want to play another round"""
         pass
@@ -67,14 +71,8 @@ def parse_args(arg):
     pass
 
 
-#Possible if name == main statement    
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
-    main(args., args., args., args.)
-    
-## Or this 
-if __name__ == "__main__":
-    args = parse_args(sys.argv[1:])
-    game = (args.name0, args.name1)
-    game.()
+    game = Chips(args.name0, args.name1)
+    game.play()
     
