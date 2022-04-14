@@ -9,14 +9,14 @@ import sys
 
 TERM = Terminal()
 
-P1COLOR = TERM.green3
-P2COLOR = TERM.red3
+P0COLOR = TERM.green3
+P1COLOR = TERM.red3
 
+SLOT = "{:>2}"
 TEMPLATE = f"""{TERM.home+TERM.clear}\
-<SP> <NAME0>
-<SP> <NAME1>
-
-"""
+<SP> {P0COLOR} <NAME0> \u2192 {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
+<SP> {P1COLOR} <NAME1> \u2192 {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
+{TERM.normal}"""
 
 
 
@@ -48,14 +48,10 @@ class Chips:
       board for the new round, prints the board, manages turns until one player win"""   
         pass
     def game():
-        pass
-    
-    
-    
+        pass    
       
 class GameState:
     
-
 #Possible if name == main statement    
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
