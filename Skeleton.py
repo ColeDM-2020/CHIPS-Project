@@ -20,17 +20,18 @@ def get_move(game, player):
     
 class Chips:
     """check if the dice value matches the values of get_move"""
-    def__init__():
-        
+    def __init__():
+        pass
     def valid_move():
         """This method checks whether a player is allowed to play from a particular pit.
-        """    
+"""
+        pass
     def play_round():
-    """This method manages one round of game play. It initializes the 
+        """This method manages one round of game play. It initializes the 
       board for the new round, prints the board, manages turns until one player win"""   
-     
-    def game()
-    
+        pass
+    def game():
+        pass
 #####
 # Board Setup
 #####
@@ -45,31 +46,6 @@ TEMPLATE = f"""{TERM.home+TERM.clear}\
     """
 
 
-def rolldice(dice1, dice2): 
-    """"
-    rolls two dice
-    """
-    pass
-
-def get_move(game, player):
-    """asks the player what chips they want to choose"""
-    pass
-
-class Chips:
-    """check if the dice value matches the values of get_move
-    """
-    def __init__(self):
-        pass
-
-class Player:
-    def __init__(self):
-        pass
-    
-    def turn():
-        pass
-    
-    def valid_move():
-        pass
     
 class GameState:
     
