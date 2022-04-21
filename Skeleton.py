@@ -19,22 +19,29 @@ TEMPLATE = f"""{TERM.home+TERM.clear}\
 PAUSE = 0.2
 STORES = [10, 20]
 
-
-def rolldice(self, dice1, dice2):
-    """"rolls two dice
+class Dice:
     
-    Args: 
-        dice1(int): The number that is rolled on dice 1 that is 1-6.
-        dice2(int): The number that is rolled on dice 2 that is 1-6.
+    def rolldice(self):
+        """"rolls two dice
     
-    Side effect:
-        Prints out the numbers rolled on the dice to the terminal. 
-    """
-    dice1 = random.randint(1,6)
-    dice2 = random.randint(1,6)
+        Args: 
+            dice1(int): The number that is rolled on dice 1 that is 1-6.
+            dice2(int): The number that is rolled on dice 2 that is 1-6.
     
-    dice = print(f"Dice 1 rolled a: {dice1} \n Dice 2 rolled a: {dice2}") 
-    return(dice)
+        Side effect:
+            Prints out the numbers rolled on the dice to the terminal. 
+        """
+        self.dice1 = random.randint(1,6)
+        self.dice2 = random.randint(1,6)
+    
+        dice = print(f"Dice 1 rolled a: {self.dice1} \n Dice 2 rolled a: {self.dice2}") 
+        return dice
+    
+    def addroll(self):
+        """adding the two dice together"""
+        
+        result = self.dice1 + self.dice2
+        return result
 
 def get_move(game, player):
     """asks the player what chips they want to choose"""
@@ -56,15 +63,19 @@ def get_move(game, player):
         
         value = selection1 + selection2
         
-        if value ==     
-    pass
+        roll = Dice()
+        
+        if value == roll.addroll():
+            return selection1 and selection2
+        else:
+            raise ValueError("Please pick chip(s) that add up to the sum of your roll")   
 
 class Chips:
     """check if the dice value matches the values of get_move"""
     def __init__():
         pass
     def valid_move():
-        """This method checks whether a player is allowed to play from a particular pit.
+        """This method checks whether a player is allowed to play from a particular chip.
         """
         pass
     def play_round():
