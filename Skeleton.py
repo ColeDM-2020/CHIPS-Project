@@ -19,6 +19,7 @@ TEMPLATE = f"""{TERM.home+TERM.clear}\
 PAUSE = 0.2
 STORES = [10, 20]
 
+
 def rolldice(self, dice1, dice2):
     """"rolls two dice
     
@@ -34,6 +35,7 @@ def rolldice(self, dice1, dice2):
     
     dice = print(f"Dice 1 rolled a: {dice1} \n Dice 2 rolled a: {dice2}") 
     return(dice)
+
 def get_move(game, player):
     """asks the player what chips they want to choose"""
     
