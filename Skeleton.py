@@ -40,6 +40,8 @@ class Dice:
     
     
     
+    dice = print(f"Dice 1 rolled a: {dice1} \n Dice 2 rolled a: {dice2}") 
+    return(dice)
 def get_move(game, player):
     """asks the player what chips they want to choose"""
     
