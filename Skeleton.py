@@ -33,7 +33,7 @@ def rolldice(self, dice1, dice2):
     dice2 = random.randint(1,6)
     
     dice = print(f"Dice 1 rolled a :{dice1}" 
-                  "Dice 2 rolled a: {dice2}") 
+                  "Dice 2 rolled a: {dice2}")
     return(dice)
 def get_move(game, player):
     """asks the player what chips they want to choose"""
