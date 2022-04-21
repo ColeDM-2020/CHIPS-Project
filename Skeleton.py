@@ -32,6 +32,8 @@ def rolldice(self, dice1, dice2):
     dice1 = random.randint(1,6)
     dice2 = random.randint(1,6)
     
+    dice = print(f"{dice1}, {dice2}")
+    return(dice)
 def get_move(game, player):
     """asks the player what chips they want to choose"""
     pass
