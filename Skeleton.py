@@ -19,21 +19,27 @@ TEMPLATE = f"""{TERM.home+TERM.clear}\
 PAUSE = 0.2
 STORES = [10, 20]
 
-def rolldice(self, dice1, dice2):
-    """"rolls two dice
+class Dice:
     
-    Args: 
+    def rolldice(self, dice1, dice2):
+     """"rolls two dice
+    
+        Args: 
         dice1(int): The number that is rolled on dice 1 that is 1-6.
         dice2(int): The number that is rolled on dice 2 that is 1-6.
     
-    Side effect:
+        Side effect:
         Prints out the numbers rolled on the dice to the terminal. 
-    """
-    dice1 = random.randint(1,6)
-    dice2 = random.randint(1,6)
+        """
+        self.dice1 = random.randint(1,6)
+        self.dice2 = random.randint(1,6)
     
-    dice = print(f"{dice1}, {dice2}")
-    return(dice)
+        dice = print(f"{dice1}, {dice2}")
+        return(dice)
+    def dice_total(self):
+    
+    
+    
 def get_move(game, player):
     """asks the player what chips they want to choose"""
     
@@ -41,21 +47,21 @@ def get_move(game, player):
         print()
         selection1 = (input(f"{game.names[player]}, select 1 chip that you would" 
                             "like to choose (or enter q to quit): ")
-                     .lower()
-                     .strip())
+                    .lower()
+                    .strip())
         
         selection2 = (input(f"{game.names[player]}, select 1 chip that you would" 
-                            "like to choose or enter '0' to skip this chip." 
-                            "(or enter q to quit): ")
-                     .lower()
-                     .strip())
+                        "like to choose or enter '0' to skip this chip." 
+                        "(or enter q to quit): ")
+                    .lower()
+                    .strip())
         if selection1 == "q" or selection2 == "q":
             sys.exit(0)
         
         value = selection1 + selection2
         
-        if value ==     
-    pass
+        if value ==
+        pass
 
 class Chips:
     """check if the dice value matches the values of get_move"""
