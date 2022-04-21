@@ -33,6 +33,25 @@ def rolldice(self, dice1, dice2):
     self.dice2 = random.randint(1,6)
 def get_move(game, player):
     """asks the player what chips they want to choose"""
+    
+    while True:
+        print()
+        selection1 = (input(f"{game.names[player]}, select 1 chip that you would" 
+                            "like to choose (or enter q to quit): ")
+                     .lower()
+                     .strip())
+        
+        selection2 = (input(f"{game.names[player]}, select 1 chip that you would" 
+                            "like to choose or enter '0' to skip this chip." 
+                            "(or enter q to quit): ")
+                     .lower()
+                     .strip())
+        if selection1 == "q" or selection2 == "q":
+            sys.exit(0)
+        
+        value = selection1 + selection2
+        
+        if value ==     
     pass
 
 class Chips:
