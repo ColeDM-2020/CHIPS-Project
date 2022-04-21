@@ -29,8 +29,11 @@ def rolldice(self, dice1, dice2):
     Side effect:
         Prints out the numbers rolled on the dice to the terminal. 
     """
-    self.dice1 = random.randint(1,6)
-    self.dice2 = random.randint(1,6)
+    dice1 = random.randint(1,6)
+    dice2 = random.randint(1,6)
+    
+    dice = print(f"{dice1}, {dice2}")
+    return(dice)
 def get_move(game, player):
     """asks the player what chips they want to choose"""
     
