@@ -3,6 +3,7 @@ from argparse import ArgumentParser
 from blessed import Terminal
 import sys
 from time import sleep
+import random
 
 TERM = Terminal()
 
@@ -18,7 +19,7 @@ TEMPLATE = f"""{TERM.home+TERM.clear}\
 PAUSE = 0.2
 STORES = [10, 20]
 
-def rolldice(dice1, dice2):
+def rolldice(self, dice1, dice2):
     """"rolls two dice
     
     Args: 
@@ -28,7 +29,8 @@ def rolldice(dice1, dice2):
     Side effect:
         Prints out the numbers rolled on the dice to the terminal. 
     """
-    pass
+    self.dice1 = random.randint(1,6)
+    self.dice2 = random.randint(1,6)
 def get_move(game, player):
     """asks the player what chips they want to choose"""
     pass
