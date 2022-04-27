@@ -1,5 +1,6 @@
 #Setting Board as a Global Variable
 from argparse import ArgumentParser
+from multiprocessing.sharedctypes import Value
 from blessed import Terminal
 import sys
 from time import sleep
@@ -60,24 +61,28 @@ def get_move(game, player):
                     .strip())
         if selection1 == "q" or selection2 == "q":
             sys.exit(0)
-        
-        value = selection1 + selection2
-        
-        roll = Dice()
-        
-        if value == roll.addroll():
-            return selection1 and selection2
-        else:
-            raise ValueError("Please pick chip(s) that add up to the sum of your roll")   
+        if type(selection1) == int and type(selection2) == int:
+            value = selection1 + selection2
+            return value
+                  
 
 class Chips:
     """check if the dice value matches the values of get_move"""
-    def __init__():
-        pass
-    def valid_move():
+    def __init__(self, player0, player1, func0 = get_move, func1 = get_move):
+        self.names = [player0, player1]
+        self.turn_funcs = [func0 , func1]
+        self.board =[]
+        
+    def valid_move(self, value):
         """This method checks whether a player is allowed to play from a particular chip.
+        
+        Args: value(int): the sum of the player's selection
         """
-        pass
+        roll = Dice()
+        
+        if value != roll.addroll():
+            raise ValueError("Please pick chip(s) that add up to the sum of your roll")
+        
     def play_round():
         """This method manages one round of game play. It initializes the 
       board for the new round, prints the board, manages turns until one player win"""   
