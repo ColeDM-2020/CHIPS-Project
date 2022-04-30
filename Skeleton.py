@@ -6,20 +6,6 @@ import sys
 from time import sleep
 import random
 
-TERM = Terminal()
-
-P0COLOR = TERM.green3
-P1COLOR = TERM.red3
-
-SLOT = "{:>2}"
-TEMPLATE = f"""{TERM.home+TERM.clear}\
-<SP> {P0COLOR} <NAME0> \u2192 {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
-<SP> {P1COLOR} <NAME1> \u2192 {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
-{TERM.normal}"""
-
-PAUSE = 0.2
-STORES = [10, 20]
-
 class Dice:
     
     def rolldice(self):
@@ -44,6 +30,7 @@ class Dice:
         result = self.dice1 + self.dice2
         return result
 
+
 def get_move(game, player):
     """asks the player what chips they want to choose"""
     
@@ -64,13 +51,18 @@ def get_move(game, player):
         if type(selection1) == int and type(selection2) == int:
             value = selection1 + selection2
             return value
-                  
+
+class GameState:
+    def __init__(self):
+        pass
+    def num_or_dot(self):
+        pass                
 
 class Chips:
     """check if the dice value matches the values of get_move"""
-    def __init__(self, player0, player1, func0 = get_move, func1 = get_move):
-        self.names = [player0, player1]
-        self.turn_funcs = [func0 , func1]
+    def __init__(self, player, func = get_move):
+        self.names = player
+        self.turn_funcs = func
         self.board =[]
         
     def valid_move(self, value):
@@ -83,7 +75,7 @@ class Chips:
         if value != roll.addroll():
             raise ValueError("Please pick chip(s) that add up to the sum of your roll")
         
-    def play_round():
+    def play_round(self):
         """This method manages one round of game play. It initializes the 
       board for the new round, prints the board, manages turns until one player win"""   
         pass
