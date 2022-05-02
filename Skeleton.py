@@ -5,6 +5,7 @@ from blessed import Terminal
 import sys
 from time import sleep
 import random
+import re
 
 class Dice:
     
@@ -54,9 +55,20 @@ def get_move(game, player):
 
 class GameState:
     def __init__(self):
-        pass
-    def num_or_dot(self):
-        pass                
+        """set attributes"""
+        def num_or_dot(num, mask):
+            if num in board:
+                return mask
+            return num             
+        self.board = " ".join(num_or_dot(c, "\u2022") for c in word)
+        self.expr = ("^"
+                     + "".join(num_or_dot(c, ".", re.escape) for c in word)
+                     + "$")
+    def __str__(self):
+        result = [self.board]
+        return result
+    def match(self, s):
+        return bool(re.search(self.expr, s.strip()))
 
 class Chips:
     """check if the dice value matches the values of get_move"""
