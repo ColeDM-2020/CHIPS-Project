@@ -98,7 +98,7 @@ class Chips:
         """Determine whether a round is over"""
         pass
     def score():
-        """calculate player's score"""
+        """Calculate player's score"""
         pass
     def play():
         """Manage game play
