@@ -57,38 +57,40 @@ class Dice:
         return result
 
 
-def get_move(game, player):
+def get_move(self,game, player, list_selections):
     """Asks the player what chips they want to choose.
     
     Args:
         player (): The player. 
     
     """
-    
+    self.list_selections = []
     
     while True:
         print()
         selection = (input(input((f"{game.names[player]}, select chips that you would" 
-                            "like to choose (or enter q to quit): ")))
+                                        "like to choose. Please seperate each chip by a space"
+                                        "(or enter q to quit):" )))
                     .lower()
                     .strip())
         
+        list_selections = list((int,selection().split()))
+        
         if selection == "q":
             sys.exit(0)
-        if type(selection) == int :
-            return selection
+        for x in list_selections:
+            if type(x) == int:
+                return list_selections
         
-        
-        
-        list = [1,2,3,4,5,6,7,8,9,10]
         try:
-            if selection not in list:
-                raise ValueError("Please enter numbers between 1-10.")
+            for x in list_selections:
+                if x not in list:
+                    raise ValueError("Please enter numbers between 1-10.")
         
-            if selection != int:
-                raise ValueError("Please enter a number.")
+                if x != int:
+                    raise ValueError("Please enter a number.")
         except ValueError as e:
-            print (e)
+                    print (e)
         
 
 """class GameState:
