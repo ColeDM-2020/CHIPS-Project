@@ -80,10 +80,7 @@ def get_move(self,game, player, list_selections):
             if type(x) == int:
                 return list_selections
         
-<<<<<<< HEAD
-=======
         list = [1,2,3,4,5,6,7,8,9,10]
->>>>>>> 73d5833d77d34c1ffef4b7f04a64efe50593bdcc
         try:
             for x in list_selections:
                 if x not in list:
