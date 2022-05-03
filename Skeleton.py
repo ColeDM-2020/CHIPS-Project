@@ -1,9 +1,7 @@
 #Setting Board as a Global Variable
 from argparse import ArgumentParser
 from multiprocessing.sharedctypes import Value
-from blessed import Terminal
 import sys
-from time import sleep
 import random
 import re
 
@@ -59,22 +57,26 @@ def get_move2(game, player):
             return selection
 
 class GameState:
-    def __init__(self, selection1, selection2):
+    def __init__(self, selection1, selection2, score, num):
         """set attributes"""
         def num_or_dot(num, mask):
             if num in board:
                 return mask
             return num             
-        self.board = " ".join(num_or_dot(c, "\u2022") for c in word)
+        self.board = " ".join(num_or_dot(c, "\u2022") for c in num)
         self.expr = ("^"
-                     + "".join(num_or_dot(c, ".", re.escape) for c in word)
+                     + "".join(num_or_dot(c, ".", re.escape) for c in num)
                      + "$")
         self.selection1 = selection1
         self.selection2 = selection2
+        self.left = set("123456789101112") - (self.selection1 + self.selection2)
+        self.score = score.copy()
+        
     def __str__(self):
-        result = [self.board
+        result = [self.board 
                   f"{self.selection1} and {self.selection2}, both chips have been removed from the board."]
         return result
+    
     def match(self, s):
         return bool(re.search(self.expr, s.strip()))
 
@@ -84,7 +86,8 @@ class Chips:
         self.names = player
         self.func0 = func0
         self.func1 = func1
-        self.board =[]
+        self.board = []
+        self.number = []
         
     def valid_move(self, value):
         """This method checks whether a player is allowed to play from a particular chip.
@@ -97,6 +100,7 @@ class Chips:
             raise ValueError("Please pick chip(s) that add up to the sum of your roll")
     def state(self):
         return GameState(self.func0, self.func1)   
+    
     def play_round(self):
         """This method manages one round of game play. it takes rolls the dice, takes the input, removes the chips"""   
         pass
@@ -107,13 +111,22 @@ class Chips:
     def score():
         """Calculate player's score"""
         pass
-    def play():
+    def outcome(self):
+        if self.board == None:
+            return "win"
+        elif self.number
+        else:
+            return None
+        
+    def play(self):
         """Manage game play
         Ask if they want to play again and call play_again()"""
-        
-    def print_winner():
-        "Prints the winnner"
-        pass
+        print(self.state().board)
+        outcome = self.outcome()
+        if outcome == "win":
+            print(f"Your score for the round was {self.score()}")
+        else:
+            print(f"The game is not over.")
     
 def parse_args(arg):
     pass
