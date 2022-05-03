@@ -1,28 +1,26 @@
 #Setting Board as a Global Variable
 from argparse import ArgumentParser
-from sre_parse import State
+from blessed import Terminal
 import sys
 import random
 import re
-from blessed import Terminal
-
+from time import sleep
 
 ##Board Setup
 
 TERM = Terminal()
 
-PCOLOR = TERM.red4 
+PCOLOR = TERM.red1 
 
 SLOT = "{:>2}"
 TEMPLATE = """f{TERM.home+TERM.clear}\
 <SP>  {P0DK}\u2193  a b c d e f g h i j  \u2190
-<SP> {PCOLOR} <NAME0> {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}"""
+<SP> {PCOLOR} <NAME> {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}"""
 
 PAUSE = 0.2
 
 NUM0 = "abcdefghij"
 NUM1 = 9
-
 
 class Dice:
     
@@ -77,8 +75,6 @@ def get_move(game, player):
             sys.exit(0)
         if type(selection) == int :
             return selection
-        
-        
         
         list = [1,2,3,4,5,6,7,8,9,10]
         try:
@@ -155,7 +151,7 @@ class Chips:
         else:
             return None
         
-    def play(self, selection1, selection2, score):
+    def play(self, selection1, selection2, score, num):
         """Manage game play
         Ask if they want to play again and call play_again()"""
         
@@ -163,12 +159,15 @@ class Chips:
         self.current_board #need to create a current board method that shows the current board
         
         while self.game_over() == False:
-             
+            
+            def num_or_dot(num, mask):
+                if num in selection1 or selection2:
+                    return mask
+                else:
+                    return num   
                           
-            self.selection1 = selection1
-            self.selection2 = selection2
-        
-        
+        self.selection1 = selection1
+        self.selection2 = selection2
         
         self.left = set("1,2,3,4,5,6,7,8,9,10") - (self.selection1 + self.selection2)
             ##^^ does not workk, need to fix
@@ -193,6 +192,24 @@ class Chips:
             print(f"Your score for the round was {self.score()}")
         else:
             print(f"The game is not over.")"""
+            
+    def print_board(self, pause=PAUSE):
+        """Displays the board in the terminal and pauses momentarily.
+
+        Args:
+            pause (float, optional): duration to pause before allowing the
+                program to continue. Expressed in seconds. Defaults to PAUSE.
+        
+        Side effects:
+            Displays information in the terminal.
+            Delays program execution for a brief amount of time.
+        """
+        template = (TEMPLATE
+                    .replace("<NAME0>", self.names[0])
+                    .replace("<NAME1>", self.names[1])
+                    .replace("<SP>", " "*len(self.names[1])))
+        print(template.format(*(self.board[6::-1]+self.board[7:])))
+        sleep(pause)
     
 def parse_args(arg):
     parser = ArgumentParser()
