@@ -80,10 +80,7 @@ def get_move(self,game, player, list_selections):
             if type(x) == int:
                 return list_selections
         
-<<<<<<< HEAD
-=======
         list = [1,2,3,4,5,6,7,8,9,10]
->>>>>>> 73d5833d77d34c1ffef4b7f04a64efe50593bdcc
         try:
             for x in list_selections:
                 if x not in list:
@@ -164,7 +161,7 @@ class Chips:
         Ask if they want to play again and call play_again()"""
         
         self.board = [1,2,3,4,5,6,7,8,9,10]
-        self.current_board #need to create a current board method that shows the current board
+        self.current_board() #need to create a current board method that shows the current board
         
         while self.game_over() == False:
             
@@ -201,20 +198,12 @@ class Chips:
         else:
             print(f"The game is not over.")"""
             
-    def print_board(self, pause=PAUSE):
-        """Displays the board in the terminal and pauses momentarily.
-
-        Args:
-            pause (float, optional): duration to pause before allowing the
-                program to continue. Expressed in seconds. Defaults to PAUSE.
+    def current_board(self, pause=PAUSE):
         
-        Side effects:
-            Displays information in the terminal.
-            Delays program execution for a brief amount of time.
-        """
         template = (TEMPLATE
-                    .replace("<NAME>", self.names[0])
-                    .replace("<SP>", " "*len(self.names[1])))
+            .replace("<NAME>", self.names[0])
+            .replace("<SP>", " "*len(self.names[1])))
+        
         print(template.format(*(self.board[10:])))
         sleep(pause)
     
