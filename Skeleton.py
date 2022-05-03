@@ -8,14 +8,11 @@ import re
 class Dice:
     
     def rolldice(self):
-        """"Rolls the two dice. 
+        """"rolls two dice
     
         Args: 
             dice1(int): The number that is rolled on dice 1 that is 1-6.
             dice2(int): The number that is rolled on dice 2 that is 1-6.
-            
-        Returns: 
-            int: The number rolled on the dice. 
     
         Side effect:
             Prints out the numbers rolled on the dice to the terminal. 
@@ -27,23 +24,17 @@ class Dice:
         return dice
     
     def addroll(self):
-        """Adding the two dice together to return to the user.
-        
-        Returns:
-            int: The sum of the two dice. 
-        
-        """
+        """Adding the two dice together to return to the user."""
         
         result = (self.dice1 + self.dice2)
         return result
 
 
-def get_move1(game, player):
-    """Asks the player what chips they want to choose or if they want to quit 
-            the game.
+def get_move(game, player):
+    """Asks the player what chips they want to choose.
     
     Args:
-        player (str): The player playing the game. 
+        player (): The player. 
     
     """
     
@@ -60,11 +51,8 @@ def get_move1(game, player):
             return selection
 
 class GameState:
-    """ Provides current information on the board when a number is taken out."""
     def __init__(self, selection1, selection2, score, num):
-        """Set attributes of the GameState class.
-        
-        """
+        """Set attributes."""
         def num_or_dot(num, mask):
             if num in selection1 or selection2:
                 return mask
@@ -94,29 +82,25 @@ class GameState:
 
 class Chips:
     """check if the dice value matches the values of get_move"""
-    def __init__(self, player, func = get_move1):
+    def __init__(self, player, func = get_move):
         self.names = player
         self.func = func
         self.board = []
         self.number = []
         
     def valid_move(self, value):
-        """This method checks whether a player is allowed to play from a 
-                particular chip.
+        """This method checks whether a player is allowed to play from a particular chip.
         
-        Args: 
-            value (int): The sum of the player's selection
-            
-        Raises:
-            Raises a ValueError if chips that do not add up to the players 
-                roll is selected. 
+        Args: value(int): the sum of the player's selection
         """
         roll = Dice()
         
         if value != roll.addroll():
             raise ValueError("Please pick chip(s) that add up to the sum of your roll")
+        
+        #Make sure they only pick avaiable spots on the board or else raise error
     def state(self):
-        return GameState(self.func, self.score, self.number)   
+        return GameState(self.func0, self.func1, self.score, self.number)   
     
     def play_round(self, player):
         """This method manages one round of game play. it takes rolls the dice, takes the input, removes the chips"""   
@@ -128,11 +112,11 @@ class Chips:
         """Determine whether a round is over"""
         pass
     def score():
-        """Calculate the player's score"""
+        """Calculate player's score"""
         pass
     def outcome(self):
         if self.board == None:
-            return f"Win"
+            return f"win"
         else:
             return None
         
