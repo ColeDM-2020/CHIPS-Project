@@ -55,14 +55,14 @@ class Dice:
         return result
 
 
-def get_move(game, player, list_selections):
+def get_move(game, player):
     """Asks the player what chips they want to choose.
     
     Args:
         player (): The player. 
     
     """
-    list_selections = []
+    list_selections = list_selections
     
     while True:
         print()
@@ -158,7 +158,7 @@ class Chips:
         else:
             return None
         
-    def play(self, selection1, selection2, score, num):
+    def play(self, score):
         """Manage game play
         Ask if they want to play again and call play_again()"""
         
@@ -166,15 +166,9 @@ class Chips:
         self.current_board() #need to create a current board method that shows the current board
         
         while self.game_over() == False:
-            
-            def num_or_dot(num, mask):
-                if num in selection1 or selection2:
-                    return mask
-                else:
-                    return num   
-                          
-        self.selection1 = selection1
-        self.selection2 = selection2
+                 
+            for x in self.list_selections:
+                
         
         self.left = set("1,2,3,4,5,6,7,8,9,10") - (self.selection1 + self.selection2)
             ##^^ does not workk, need to fix
