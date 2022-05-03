@@ -146,15 +146,11 @@ class Chips:
     def game_over():
         """Determine whether a round is over"""
         pass
+    
     def score(self):
         """Calculate player's score"""
         self.
         pass
-    def outcome(self):
-        if self.board == None:
-            return f"win"
-        else:
-            return None
         
     def play(self, score, list_selections = get_move()):
         """Manage game play
@@ -170,8 +166,7 @@ class Chips:
                 if x in self.board:
                     self.board.remove(x)
                         
-            #need to update score here     
-        
+            #need to update score here       
         
     def __str__(self):
         result = [self.board, 
@@ -183,30 +178,22 @@ class Chips:
         return "\n".join(result)
     
     def match(self, s):
-        return bool(re.search(self.expr, s.strip()))
-            
+        return bool(re.search(self.expr, s.strip()))   
         
         """print(self.state().board)
         outcome = self.outcome()
         if outcome == "win":
             print(f"Your score for the round was {self.score()}")
         else:
-            print(f"The game is not over.")"""
+            print(fThe game is not over.)"""
             
     def print_board(self, pause=PAUSE):
-        """Displays the board in the terminal and pauses momentarily.
+         """Displays the board in the terminal and pauses momentarily.
+         
+         """
 
-        Args:
-            pause (float, optional): duration to pause before allowing the
-                program to continue. Expressed in seconds. Defaults to PAUSE.
-        
-        Side effects:
-            Displays information in the terminal.
-            Delays program execution for a brief amount of time.
-        """
         template = (TEMPLATE
                     .replace("<NAME0>", self.names[0])
-                    .replace("<NAME1>", self.names[1])
                     .replace("<SP>", " "*len(self.names[1])))
         print(template.format(*(self.board[6::-1]+self.board[7:])))
         sleep(pause)
