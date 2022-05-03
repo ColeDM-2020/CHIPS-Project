@@ -54,7 +54,7 @@ def get_move(game, player):
     
     while True:
         print()
-        selection = (input(input((f"{game.names[player]}, select 1 chip that you would" 
+        selection = (input(input((f"{game.names[player]}, select chips that you would" 
                             "like to choose (or enter q to quit): ")))
                     .lower()
                     .strip())
@@ -129,15 +129,49 @@ class Chips:
         else:
             return None
         
-    def play(self):
+    def play(self, selection1, selection2, score, num):
         """Manage game play
         Ask if they want to play again and call play_again()"""
-        print(self.state().board)
+        
+        self.board = [1,2,3,4,5,6,7,8,9,10]
+        self.current_board #need to create a current board method that shows the current board
+        
+        while self.game_over() == False:
+            
+            def num_or_dot(num, mask):
+                if num in selection1 or selection2:
+                    return mask
+                else:
+                    return num   
+                          
+        self.selection1 = selection1
+        self.selection2 = selection2
+        
+        
+        
+        self.left = set("1,2,3,4,5,6,7,8,9,10") - (self.selection1 + self.selection2)
+            ##^^ does not workk, need to fix
+        self.score = score.copy()
+        
+    def __str__(self):
+        result = [self.board, 
+                  f"{self.selection1} and {self.selection2}, both chips have been removed from the board."]
+        for name, score in self.score.items():
+            msg = f"{name} has made {score} of {self.max_score} bad guesses"
+            result.append(msg)
+        #why did u add this, do they even have the option to make bad guessess???
+        return "\n".join(result)
+    
+    def match(self, s):
+        return bool(re.search(self.expr, s.strip()))
+            
+        
+        """print(self.state().board)
         outcome = self.outcome()
         if outcome == "win":
             print(f"Your score for the round was {self.score()}")
         else:
-            print(f"The game is not over.")
+            print(f"The game is not over.")"""
     
 def parse_args(arg):
     parser = ArgumentParser()
