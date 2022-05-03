@@ -4,20 +4,25 @@ from sre_parse import State
 import sys
 import random
 import re
+from blessed import Terminal
 
-"""
-Board Setup
+
+##Board Setup
 
 TERM = Terminal()
 
-P0DK = TERM.red4 
+PCOLOR = TERM.red4 
 
 SLOT = "{:>2}"
-TEMPLATE = f{TERM.home+TERM.clear}\
+TEMPLATE = """f{TERM.home+TERM.clear}\
 <SP>  {P0DK}\u2193  a b c d e f g h i j  \u2190
-<SP> {P0LT} <NAME0> {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
+<SP> {PCOLOR} <NAME0> {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}"""
 
-"""
+PAUSE = 0.2
+
+NUM0 = "abcdefghij"
+NUM1 = 9
+
 
 class Dice:
     
@@ -59,8 +64,11 @@ def get_move(game, player):
         player (): The player. 
     
     """
+<<<<<<< HEAD
+=======
     
     
+>>>>>>> 84248151fb8599fb9f83731c31cccf26614f3b61
     while True:
         print()
         selection = (input(input((f"{game.names[player]}, select chips that you would" 
@@ -122,7 +130,6 @@ class Chips:
         self.names = player
         self.func = func
         self.board = []
-        self.number = set()
         
     def valid_move(self, value):
         """This method checks whether a player is allowed to play from a particular chip.
