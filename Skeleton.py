@@ -1,6 +1,5 @@
 #Setting Board as a Global Variable
 from argparse import ArgumentParser
-from multiprocessing.sharedctypes import Value
 from sre_parse import State
 import sys
 import random
@@ -27,7 +26,7 @@ class Dice:
     def addroll(self):
         """Adding the two dice together to return to the user."""
         
-        result = self.dice1 + self.dice2
+        result = (self.dice1 + self.dice2)
         return result
 
 
@@ -46,17 +45,6 @@ def get_move1(game, player):
                     .lower()
                     .strip())
         
-        if selection == "q":
-            sys.exit(0)
-        if type(selection) == int :
-            return selection
-def get_move2(game, player):
-    while True:
-        print()
-        selection = (input(f"{game.names[player]}, select 1 chip that you would" 
-                            "like to choose (or enter q to quit): ")
-                    .lower()
-                    .strip())
         if selection == "q":
             sys.exit(0)
         if type(selection) == int :
@@ -93,11 +81,10 @@ class GameState:
         return bool(re.search(self.expr, s.strip()))
 
 class Chips:
-    """Check if the dice value matches the values of get_move"""
-    def __init__(self, player, func0 = get_move1, func1 = get_move2):
+    """check if the dice value matches the values of get_move"""
+    def __init__(self, player, func = get_move):
         self.names = player
-        self.func0 = func0
-        self.func1 = func1
+        self.func = func
         self.board = []
         self.number = []
         
