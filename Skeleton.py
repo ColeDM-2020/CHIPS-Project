@@ -64,11 +64,8 @@ def get_move(game, player):
         player (): The player. 
     
     """
-<<<<<<< HEAD
-=======
     
     
->>>>>>> 84248151fb8599fb9f83731c31cccf26614f3b61
     while True:
         print()
         selection = (input(input((f"{game.names[player]}, select chips that you would" 
