@@ -32,6 +32,9 @@ class Dice:
         Args: 
             dice1(int): The number that is rolled on dice 1 that is 1-6.
             dice2(int): The number that is rolled on dice 2 that is 1-6.
+            
+        Returns:
+            str: The string of the two numbers rolled on the dice. 
     
         Side effect:
             Prints out the numbers rolled on the dice to the terminal. 
@@ -43,7 +46,12 @@ class Dice:
         return dice
     
     def addroll(self):
-        """Adding the two dice together to return to the user."""
+        """Adding the two dice together to return to the user.
+        
+        Returns:
+            int : The sum of the two dice rolls. 
+        
+        """
         
         result = (self.dice1 + self.dice2)
         return result
@@ -56,9 +64,14 @@ def get_move(game, player):
         player (): The player. 
     
     """
+<<<<<<< HEAD
+=======
+    
+    
+>>>>>>> 84248151fb8599fb9f83731c31cccf26614f3b61
     while True:
         print()
-        selection = (input(input((f"{game.names[player]}, select 1 chip that you would" 
+        selection = (input(input((f"{game.names[player]}, select chips that you would" 
                             "like to choose (or enter q to quit): ")))
                     .lower()
                     .strip())
@@ -67,6 +80,19 @@ def get_move(game, player):
             sys.exit(0)
         if type(selection) == int :
             return selection
+        
+        
+        
+        list = [1,2,3,4,5,6,7,8,9,10]
+        try:
+            if selection not in list:
+                raise ValueError("Please enter numbers between 1-10.")
+        
+            if selection != int:
+                raise ValueError("Please enter a number.")
+        except ValueError as e:
+            print (e)
+        
 
 """class GameState:
     def __init__(self, selection1, selection2, score, num):
@@ -132,15 +158,49 @@ class Chips:
         else:
             return None
         
-    def play(self):
+    def play(self, selection1, selection2, score, num):
         """Manage game play
         Ask if they want to play again and call play_again()"""
-        print(self.state().board)
+        
+        self.board = [1,2,3,4,5,6,7,8,9,10]
+        self.current_board #need to create a current board method that shows the current board
+        
+        while self.game_over() == False:
+            
+            def num_or_dot(num, mask):
+                if num in selection1 or selection2:
+                    return mask
+                else:
+                    return num   
+                          
+        self.selection1 = selection1
+        self.selection2 = selection2
+        
+        
+        
+        self.left = set("1,2,3,4,5,6,7,8,9,10") - (self.selection1 + self.selection2)
+            ##^^ does not workk, need to fix
+        self.score = score.copy()
+        
+    def __str__(self):
+        result = [self.board, 
+                  f"{self.selection1} and {self.selection2}, both chips have been removed from the board."]
+        for name, score in self.score.items():
+            msg = f"{name} has made {score} of {self.max_score} bad guesses"
+            result.append(msg)
+        #why did u add this, do they even have the option to make bad guessess???
+        return "\n".join(result)
+    
+    def match(self, s):
+        return bool(re.search(self.expr, s.strip()))
+            
+        
+        """print(self.state().board)
         outcome = self.outcome()
         if outcome == "win":
             print(f"Your score for the round was {self.score()}")
         else:
-            print(f"The game is not over.")
+            print(f"The game is not over.")"""
     
 def parse_args(arg):
     parser = ArgumentParser()
