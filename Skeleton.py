@@ -55,14 +55,14 @@ class Dice:
         return result
 
 
-def get_move(self,game, player, list_selections):
+def get_move(game, player, list_selections):
     """Asks the player what chips they want to choose.
     
     Args:
         player (): The player. 
     
     """
-    self.list_selections = []
+    list_selections = []
     
     while True:
         print()
