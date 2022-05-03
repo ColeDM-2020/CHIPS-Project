@@ -27,6 +27,9 @@ class Dice:
         Args: 
             dice1(int): The number that is rolled on dice 1 that is 1-6.
             dice2(int): The number that is rolled on dice 2 that is 1-6.
+            
+        Returns:
+            str: The string of the two numbers rolled on the dice. 
     
         Side effect:
             Prints out the numbers rolled on the dice to the terminal. 
@@ -38,7 +41,12 @@ class Dice:
         return dice
     
     def addroll(self):
-        """Adding the two dice together to return to the user."""
+        """Adding the two dice together to return to the user.
+        
+        Returns:
+            int : The sum of the two dice rolls. 
+        
+        """
         
         result = (self.dice1 + self.dice2)
         return result
@@ -52,6 +60,7 @@ def get_move(game, player):
     
     """
     
+    
     while True:
         print()
         selection = (input(input((f"{game.names[player]}, select 1 chip that you would" 
@@ -63,6 +72,19 @@ def get_move(game, player):
             sys.exit(0)
         if type(selection) == int :
             return selection
+        
+        
+        
+        list = [1,2,3,4,5,6,7,8,9,10]
+        try:
+            if selection not in list:
+                raise ValueError("Please enter numbers between 1-10.")
+        
+            if selection != int:
+                raise ValueError("Please enter a number.")
+        except ValueError as e:
+            print (e)
+        
 
 """class GameState:
     def __init__(self, selection1, selection2, score, num):
