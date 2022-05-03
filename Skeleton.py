@@ -1,6 +1,7 @@
 #Setting Board as a Global Variable
 from argparse import ArgumentParser
 from multiprocessing.sharedctypes import Value
+from sre_parse import State
 import sys
 import random
 import re
@@ -60,9 +61,10 @@ class GameState:
     def __init__(self, selection1, selection2, score, num):
         """set attributes"""
         def num_or_dot(num, mask):
-            if num in board:
+            if num in selection1 or selection2:
                 return mask
-            return num             
+            else:
+                return num             
         self.board = " ".join(num_or_dot(c, "\u2022") for c in num)
         self.expr = ("^"
                      + "".join(num_or_dot(c, ".", re.escape) for c in num)
@@ -70,14 +72,16 @@ class GameState:
         self.selection1 = selection1
         self.selection2 = selection2
         self.left = set("123456789101112") - (self.selection1 + self.selection2)
+        ##^^ does not workk, need to fix
         self.score = score.copy()
         
     def __str__(self):
-        result = [self.board 
+        result = [self.board, 
                   f"{self.selection1} and {self.selection2}, both chips have been removed from the board."]
         for name, score in self.score.items():
             msg = f"{name} has made {score} of {self.max_score} bad guesses"
             result.append(msg)
+        #why did u add this, do they even have the option to make bad guessess???
         return "\n".join(result)
     
     def match(self, s):
@@ -102,11 +106,13 @@ class Chips:
         if value != roll.addroll():
             raise ValueError("Please pick chip(s) that add up to the sum of your roll")
     def state(self):
-        return GameState(self.func0, self.func1)   
+        return GameState(self.func0, self.func1, self.score, self.number)   
     
-    def play_round(self):
+    def play_round(self, player):
         """This method manages one round of game play. it takes rolls the dice, takes the input, removes the chips"""   
-        pass
+        state = self.state()
+        while True:
+            
     
     def game_over():
         """Determine whether a round is over"""
@@ -116,8 +122,7 @@ class Chips:
         pass
     def outcome(self):
         if self.board == None:
-            return "win"
-        elif self.number
+            return f"win"
         else:
             return None
         
@@ -132,11 +137,13 @@ class Chips:
             print(f"The game is not over.")
     
 def parse_args(arg):
-    pass
+    parser = ArgumentParser()
+    parser.add_argument("name", help="the first player's name")
+    return parser.parse_args(arg)
 
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
-    game = Chips(args.name0, args.name1)
+    game = Chips(args.name)
     game.play()
     
