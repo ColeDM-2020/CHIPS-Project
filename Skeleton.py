@@ -155,7 +155,7 @@ class Chips:
         else:
             return None
         
-    def play(self, selection1, selection2, score, num):
+    def play(self, selection1, selection2, score):
         """Manage game play
         Ask if they want to play again and call play_again()"""
         
@@ -163,15 +163,10 @@ class Chips:
         self.current_board #need to create a current board method that shows the current board
         
         while self.game_over() == False:
-            
-            def num_or_dot(num, mask):
-                if num in selection1 or selection2:
-                    return mask
-                else:
-                    return num   
+             
                           
-        self.selection1 = selection1
-        self.selection2 = selection2
+            self.selection1 = selection1
+            self.selection2 = selection2
         
         
         
