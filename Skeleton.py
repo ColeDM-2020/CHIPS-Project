@@ -75,7 +75,10 @@ class GameState:
     def __str__(self):
         result = [self.board 
                   f"{self.selection1} and {self.selection2}, both chips have been removed from the board."]
-        return result
+        for name, score in self.score.items():
+            msg = f"{name} has made {score} of {self.max_score} bad guesses"
+            result.append(msg)
+        return "\n".join(result)
     
     def match(self, s):
         return bool(re.search(self.expr, s.strip()))
