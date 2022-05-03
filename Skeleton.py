@@ -25,14 +25,19 @@ class Dice:
         return dice
     
     def addroll(self):
-        """adding the two dice together"""
+        """Adding the two dice together to return to the user."""
         
         result = self.dice1 + self.dice2
         return result
 
 
 def get_move1(game, player):
-    """asks the player what chips they want to choose"""
+    """Asks the player what chips they want to choose.
+    
+    Args:
+        player (): The player. 
+    
+    """
     
     while True:
         print()
@@ -59,7 +64,7 @@ def get_move2(game, player):
 
 class GameState:
     def __init__(self, selection1, selection2, score, num):
-        """set attributes"""
+        """Set attributes."""
         def num_or_dot(num, mask):
             if num in selection1 or selection2:
                 return mask
@@ -88,7 +93,7 @@ class GameState:
         return bool(re.search(self.expr, s.strip()))
 
 class Chips:
-    """check if the dice value matches the values of get_move"""
+    """Check if the dice value matches the values of get_move"""
     def __init__(self, player, func0 = get_move1, func1 = get_move2):
         self.names = player
         self.func0 = func0
