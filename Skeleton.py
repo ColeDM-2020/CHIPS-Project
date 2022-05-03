@@ -205,10 +205,9 @@ class Chips:
             Delays program execution for a brief amount of time.
         """
         template = (TEMPLATE
-                    .replace("<NAME0>", self.names[0])
-                    .replace("<NAME1>", self.names[1])
+                    .replace("<NAME>", self.names[0])
                     .replace("<SP>", " "*len(self.names[1])))
-        print(template.format(*(self.board[6::-1]+self.board[7:])))
+        print(template.format(*(self.board[10:])))
         sleep(pause)
     
 def parse_args(arg):
