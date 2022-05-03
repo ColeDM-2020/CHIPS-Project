@@ -5,6 +5,20 @@ import sys
 import random
 import re
 
+"""
+Board Setup
+
+TERM = Terminal()
+
+P0DK = TERM.red4 
+
+SLOT = "{:>2}"
+TEMPLATE = f{TERM.home+TERM.clear}\
+<SP>  {P0DK}\u2193  a b c d e f g h i j  \u2190
+<SP> {P0LT} <NAME0> {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
+
+"""
+
 class Dice:
     
     def rolldice(self):
@@ -35,8 +49,8 @@ def get_move(game, player):
     
     while True:
         print()
-        selection = (input(f"{game.names[player]}, select 1 chip that you would" 
-                            "like to choose (or enter q to quit): ")
+        selection = (input(input((f"{game.names[player]}, select 1 chip that you would" 
+                            "like to choose (or enter q to quit): ")))
                     .lower()
                     .strip())
         
@@ -45,9 +59,10 @@ def get_move(game, player):
         if type(selection) == int :
             return selection
 
-class GameState:
+"""class GameState:
     def __init__(self, selection1, selection2, score, num):
-        """set attributes"""
+        set attributes       
+        
         def num_or_dot(num, mask):
             if num in selection1 or selection2:
                 return mask
@@ -59,8 +74,8 @@ class GameState:
                      + "$")
         self.selection1 = selection1
         self.selection2 = selection2
-        self.left = set("123456789101112") - (self.selection1 + self.selection2)
-        ##^^ does not workk, need to fix
+        self.left = set("1,2,3,4,5,6,7,8,9,10") - (self.selection1 + self.selection2)
+            ##^^ does not workk, need to fix
         self.score = score.copy()
         
     def __str__(self):
@@ -73,7 +88,7 @@ class GameState:
         return "\n".join(result)
     
     def match(self, s):
-        return bool(re.search(self.expr, s.strip()))
+        return bool(re.search(self.expr, s.strip()))"""
 
 class Chips:
     """check if the dice value matches the values of get_move"""
@@ -81,7 +96,7 @@ class Chips:
         self.names = player
         self.func = func
         self.board = []
-        self.number = []
+        self.number = set()
         
     def valid_move(self, value):
         """This method checks whether a player is allowed to play from a particular chip.
@@ -92,20 +107,16 @@ class Chips:
         
         if value != roll.addroll():
             raise ValueError("Please pick chip(s) that add up to the sum of your roll")
+        
     def state(self):
-        return GameState(self.func0, self.func1, self.score, self.number)   
-    
-    def play_round(self, player):
-        """This method manages one round of game play. it takes rolls the dice, takes the input, removes the chips"""   
-        state = self.state()
-        while True:
-           pass 
+        return GameState(self.func, self.score, self.number)   
     
     def game_over():
         """Determine whether a round is over"""
         pass
-    def score():
+    def score(self):
         """Calculate player's score"""
+        self.
         pass
     def outcome(self):
         if self.board == None:
