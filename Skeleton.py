@@ -20,7 +20,7 @@ TEMPLATE = """f{TERM.home+TERM.clear}\
 PAUSE = 0.2
 
 NUM0 = "abcdefghij"
-NUM1 = 9
+NUM1 = [10]
 
 class Dice:
     
@@ -143,27 +143,28 @@ class Chips:
     
     def game_over(self):
         """Determine whether a round is over"""
-        if sum(self.board[0:9]) == 0:
+        if sum(self.board[0:10]) == 0:
             return f"Your final score was {self.score}."
     
     def score(self):
         """Calculate player's score"""
-        return sum(self.board[0:9])
+        return sum(self.board[0:10])
         
-    def play(self, list_selections = get_move):
+    def play(self, name, list_selections = get_move):
         """Manage game play
         Ask if they want to play again and call play_again()"""
-    
         
-        self.board = [1,2,3,4,5,6,7,8,9,10]
-        self.current_board 
+        self.board = [0,1,2,3,4,5,6,7,8,9,10]
+        self.current_board
+        name = 0 
         
         while self.game_over() == False:
                  
             for x in list_selections:
                 if x in self.board:
                     self.board.remove(x)
-                          
+                        
+            #need to update score here       
         
     """def __str__(self):
         result = [self.board, 
