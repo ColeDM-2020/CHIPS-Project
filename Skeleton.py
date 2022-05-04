@@ -1,10 +1,12 @@
 #Setting Board as a Global Variable
 from argparse import ArgumentParser
+from signal import pause
 from blessed import Terminal
+from time import sleep
 import sys
 import random
 import re
-from time import sleep
+
 
 ##Board Setup
 
@@ -20,7 +22,7 @@ TEMPLATE = """f{TERM.home+TERM.clear}\
 PAUSE = 0.2
 
 NUM0 = "abcdefghij"
-NUM1 = 9
+NUM1 = [9]
 
 class Dice:
     
@@ -74,7 +76,7 @@ def get_move(game, player):
         
         list_selections = list((int,selection().split()))
         
-        if selection == "q":
+        if selection == "quit":
             sys.exit(0)
         for x in list_selections:
             if type(x) == int:
@@ -140,8 +142,8 @@ class Chips:
             raise ValueError("Please pick chip(s) that add up to the sum of your roll")
         
         #Make sure they only pick avaiable spots on the board or else raise error
-    def state(self):
-        return GameState(self.func, self.score, self.number)   
+    """def state(self):
+        return GameState(self.func, self.score, self.number)"""
     
     def game_over():
         """Determine whether a round is over"""
@@ -158,7 +160,7 @@ class Chips:
     
         
         self.board = [1,2,3,4,5,6,7,8,9,10]
-        self.current_board #need to create a current board method that shows the current board
+        self.current_board() #need to create a current board method that shows the current board
         
         while self.game_over() == False:
                  
@@ -180,15 +182,15 @@ class Chips:
     def match(self, s):
         return bool(re.search(self.expr, s.strip()))   
         
-        """print(self.state().board)
+    """print(self.state().board)
         outcome = self.outcome()
         if outcome == "win":
             print(f"Your score for the round was {self.score()}")
         else:
             print(fThe game is not over.)"""
             
-    def print_board(self, pause=PAUSE):
-         """Displays the board in the terminal and pauses momentarily.
+    def current_board(self, pause=PAUSE):
+        """Displays the board in the terminal and pauses momentarily.
          
          """
 
@@ -196,7 +198,7 @@ class Chips:
                     .replace("<NAME0>", self.names[0])
                     .replace("<SP>", " "*len(self.names[1])))
         print(template.format(*(self.board[6::-1]+self.board[7:])))
-        sleep(pause)
+        sleep()
     
 def parse_args(arg):
     parser = ArgumentParser()
