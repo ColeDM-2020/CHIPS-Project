@@ -1,6 +1,5 @@
 #Setting Board as a Global Variable
 from argparse import ArgumentParser
-from signal import pause
 from blessed import Terminal
 from time import sleep
 import sys
