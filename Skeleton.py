@@ -166,7 +166,7 @@ class Chips:
                         
             #need to update score here       
         
-    def __str__(self):
+    """def __str__(self):
         result = [self.board, 
                   f"{self.selection1} and {self.selection2}, both chips have been removed from the board."]
         for name, score in self.score.items():
@@ -176,9 +176,9 @@ class Chips:
         return "\n".join(result)
     
     def match(self, s):
-        return bool(re.search(self.expr, s.strip()))   
+        return bool(re.search(self.expr, s.strip()))
         
-    """print(self.state().board)
+    print(self.state().board)
         outcome = self.outcome()
         if outcome == "win":
             print(f"Your score for the round was {self.score()}")
