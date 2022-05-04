@@ -149,7 +149,7 @@ class Chips:
     
     def score(self):
         """Calculate player's score"""
-        self.
+        
         pass
         
     def play(self, score, list_selections = get_move()):
