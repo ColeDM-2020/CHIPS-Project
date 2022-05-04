@@ -185,8 +185,8 @@ class Chips:
         else:
             print(fThe game is not over.)"""
             
-    def print_board(self, pause=PAUSE):
-         """Displays the board in the terminal and pauses momentarily.
+    def current_board(self, pause=PAUSE):
+        """Displays the board in the terminal and pauses momentarily.
          
          """
         template = (TEMPLATE
