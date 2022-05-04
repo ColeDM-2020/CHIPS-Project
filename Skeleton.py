@@ -14,13 +14,13 @@ PCOLOR = TERM.red1
 
 SLOT = "{:>2}"
 TEMPLATE = """f{TERM.home+TERM.clear}\
-<SP>  {P0DK}\u2193  a b c d e f g h i j  \u2190
-<SP> {PCOLOR} <NAME> {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}"""
+<SP> {PCOLOR} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
+<SP>  {PCOLOR} <NAME> a b c d e f g h i j"""
 
 PAUSE = 0.2
 
 NUM0 = "abcdefghij"
-NUM1 = [10]
+NUM1 = [9]
 
 class Dice:
     
@@ -143,20 +143,19 @@ class Chips:
     
     def game_over(self):
         """Determine whether a round is over"""
-        if sum(self.board[0:10]) == 0:
+        if sum(self.board[0:9]) == 0:
             return f"Your final score was {self.score}."
     
     def score(self):
         """Calculate player's score"""
-        return sum(self.board[0:10])
+        return sum(self.board[0:9])
         
     def play(self, name, list_selections = get_move):
         """Manage game play
         Ask if they want to play again and call play_again()"""
         
-        self.board = [0,1,2,3,4,5,6,7,8,9,10]
-        self.current_board
-        name = 0 
+        self.board = [1,2,3,4,5,6,7,8,9,10]
+        self.current_board 
         
         while self.game_over() == False:
                  
