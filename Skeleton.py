@@ -163,7 +163,7 @@ class Chips:
                 if x in self.board:
                     self.board.remove(x)
                     
-        self.current_board()
+        print(self.current_board())
 
     def play_round(self):
     
@@ -215,8 +215,7 @@ class Chips:
          
          """
         template = (TEMPLATE
-                    .replace("<NAME>", self.names[0])
-                    .replace("<SP>", " "*len(self.names[1])))
+                    .replace("<SP>", " "*len(self.names[0]))).replace("<NAME>", self.names[0])
         print(template.format(*(self.board[9:])))
         sleep(pause)
     
