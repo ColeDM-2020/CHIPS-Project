@@ -1,6 +1,5 @@
 #Setting Board as a Global Variable
 from argparse import ArgumentParser
-from signal import pause
 from blessed import Terminal
 from time import sleep
 import sys
@@ -195,7 +194,7 @@ class Chips:
                     .replace("<NAME0>", self.names[0])
                     .replace("<SP>", " "*len(self.names[1])))
         print(template.format(*(self.board[6::-1]+self.board[7:])))
-        sleep()
+        sleep(pause)
     
 def parse_args(arg):
     parser = ArgumentParser()
