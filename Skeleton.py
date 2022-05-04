@@ -13,7 +13,7 @@ TERM = Terminal()
 PCOLOR = TERM.red1 
 
 SLOT = "{:>2}"
-TEMPLATE = """f{TERM.home+TERM.clear}\
+TEMPLATE = f"""{TERM.home+TERM.clear}\
 <SP> {PCOLOR} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
 <SP>  {PCOLOR} <NAME> a b c d e f g h i j"""
 
