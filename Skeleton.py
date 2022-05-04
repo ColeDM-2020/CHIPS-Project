@@ -14,13 +14,18 @@ PCOLOR = TERM.red1
 
 SLOT = "{:>2}"
 TEMPLATE = f"""{TERM.home+TERM.clear}\
+<<<<<<< HEAD
 <SP>  {PCOLOR}\u2193  a b c d e f g h i j  \u2190
 <SP> {PCOLOR} <NAME> {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}"""
+=======
+<SP> {PCOLOR} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
+<SP>  {PCOLOR} <NAME> a b c d e f g h i j"""
+>>>>>>> 1bdc68c4fc347b60694ac2464904b1acf3370825
 
 PAUSE = 0.2
 
 NUM0 = "abcdefghij"
-NUM1 = 9
+NUM1 = [9]
 
 class Dice:
     
@@ -153,8 +158,12 @@ class Chips:
     def play_round(self, list_selections = get_move):
         """Manage game play
         Ask if they want to play again and call play_again()"""
+<<<<<<< HEAD
     
 
+=======
+        
+>>>>>>> 1bdc68c4fc347b60694ac2464904b1acf3370825
         self.board = [1,2,3,4,5,6,7,8,9,10]
         self.current_board
         
@@ -163,9 +172,20 @@ class Chips:
             for x in list_selections:
                 if x in self.board:
                     self.board.remove(x)
+<<<<<<< HEAD
                     print (self.current_board)
     def play(self):
         """Manage game play.
+=======
+<<<<<<< HEAD
+                        
+            #need to update score here       
+=======
+                    
+        print (self.current_board)
+                          
+>>>>>>> 434777b02b049a309a6b769af14ab9ee542c526d
+>>>>>>> 1bdc68c4fc347b60694ac2464904b1acf3370825
         
         After each round, ask players if they would like to play again.
         
