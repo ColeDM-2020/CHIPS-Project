@@ -13,8 +13,8 @@ TERM = Terminal()
 PCOLOR = TERM.red1 
 
 SLOT = "{:>2}"
-TEMPLATE = """f{TERM.home+TERM.clear}\
-<SP>  {P0DK}\u2193  a b c d e f g h i j  \u2190
+TEMPLATE = f"""{TERM.home+TERM.clear}\
+<SP>  {PCOLOR}\u2193  a b c d e f g h i j  \u2190
 <SP> {PCOLOR} <NAME> {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}"""
 
 PAUSE = 0.2
@@ -150,11 +150,11 @@ class Chips:
         """Calculate player's score"""
         return sum(self.board[0:9])
         
-    def play(self, list_selections = get_move):
+    def play_round(self, list_selections = get_move):
         """Manage game play
         Ask if they want to play again and call play_again()"""
     
-        
+
         self.board = [1,2,3,4,5,6,7,8,9,10]
         self.current_board
         
@@ -163,9 +163,24 @@ class Chips:
             for x in list_selections:
                 if x in self.board:
                     self.board.remove(x)
-                    
-        print (self.current_board)
-                          
+                    print (self.current_board)
+    def play(self):
+        """Manage game play.
+        
+        After each round, ask players if they would like to play again.
+        
+        Side effects:
+            Displays information in the terminal.
+            Calls methods that modify self.board.
+        """
+        with TERM.fullscreen():
+            while True:
+                try:
+                    self.play_round()
+                except SystemExit:
+                    print("Thanks for playing!")
+                    sleep(PAUSE*3)
+                    raise                      
         
     def __str__(self):
         result = [self.board, 
