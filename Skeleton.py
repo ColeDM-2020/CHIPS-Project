@@ -163,7 +163,32 @@ class Chips:
                 if x in self.board:
                     self.board.remove(x)
                     
-        print (self.current_board)
+        self.current_board()
+
+    def play_round(self):
+    
+        with TERM.fullscreen():
+            while True:
+                try:
+                    self.play()
+                    if not self.play_again():
+                        sys.exit(0)
+                except SystemExit:
+                    print("Thanks for playing!")
+                    sleep(PAUSE*3)
+                    raise
+                
+    def play_again():
+        
+        print()
+        while True:
+            response = (input("Would you like to play again (y/n)? ")
+                        .strip()
+                        .lower()[0])
+            if response not in "ny":
+                print("Please type 'y' or 'n'.")
+                continue
+            return response == "y"
                           
         
     """def __str__(self):
