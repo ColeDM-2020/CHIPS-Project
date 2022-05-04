@@ -12,7 +12,7 @@ TERM = Terminal()
 
 PCOLOR = TERM.red1 
 
-SLOT = "{:>2}"
+SLOT = "{:>1}"
 TEMPLATE = f"""{TERM.home+TERM.clear}\
 <SP> {PCOLOR} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
 <SP>  {PCOLOR} <NAME> a b c d e f g h i j"""
@@ -162,14 +162,9 @@ class Chips:
             for x in list_selections:
                 if x in self.board:
                     self.board.remove(x)
-<<<<<<< HEAD
-                        
-            #need to update score here       
-=======
                     
         print (self.current_board)
                           
->>>>>>> 434777b02b049a309a6b769af14ab9ee542c526d
         
     """def __str__(self):
         result = [self.board, 
