@@ -156,13 +156,15 @@ class Chips:
     
         
         self.board = [1,2,3,4,5,6,7,8,9,10]
-        self.current_board 
+        self.current_board
         
         while self.game_over() == False:
                  
             for x in list_selections:
                 if x in self.board:
                     self.board.remove(x)
+                    
+        print (self.current_board)
                           
         
     def __str__(self):
