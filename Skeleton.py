@@ -148,12 +148,9 @@ class Chips:
     
     def score(self):
         """Calculate player's score"""
-<<<<<<< HEAD
         
         pass
-=======
         return sum(self.board[0:9])
->>>>>>> a39997f62d5df54564849c90903008d5734cb838
         
     def play(self, score, list_selections = get_move):
         """Manage game play
