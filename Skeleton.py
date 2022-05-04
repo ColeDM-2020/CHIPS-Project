@@ -163,8 +163,7 @@ class Chips:
             for x in list_selections:
                 if x in self.board:
                     self.board.remove(x)
-                        
-            #need to update score here       
+                          
         
     """def __str__(self):
         result = [self.board, 
