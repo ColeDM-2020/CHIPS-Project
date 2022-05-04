@@ -155,15 +155,21 @@ class Chips:
         Ask if they want to play again and call play_again()"""
         
         self.board = [1,2,3,4,5,6,7,8,9,10]
-        self.current_board 
+        self.current_board
         
         while self.game_over() == False:
                  
             for x in list_selections:
                 if x in self.board:
                     self.board.remove(x)
+<<<<<<< HEAD
                         
             #need to update score here       
+=======
+                    
+        print (self.current_board)
+                          
+>>>>>>> 434777b02b049a309a6b769af14ab9ee542c526d
         
     """def __str__(self):
         result = [self.board, 
