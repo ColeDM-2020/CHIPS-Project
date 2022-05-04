@@ -156,11 +156,7 @@ class Chips:
     
         
         self.board = [1,2,3,4,5,6,7,8,9,10]
-<<<<<<< HEAD
-        self.current_board #need to create a current board method that shows the current board
-=======
         self.current_board 
->>>>>>> 63acc39da8c39070ca5a9b7f036984ff17e96d49
         
         while self.game_over() == False:
                  
