@@ -1,12 +1,10 @@
 #Setting Board as a Global Variable
 from argparse import ArgumentParser
-from signal import pause
 from blessed import Terminal
-from time import sleep
 import sys
 import random
 import re
-
+from time import sleep
 
 ##Board Setup
 
@@ -22,7 +20,7 @@ TEMPLATE = """f{TERM.home+TERM.clear}\
 PAUSE = 0.2
 
 NUM0 = "abcdefghij"
-NUM1 = [9]
+NUM1 = 9
 
 class Dice:
     
@@ -76,7 +74,7 @@ def get_move(game, player):
         
         list_selections = list((int,selection().split()))
         
-        if selection == "quit":
+        if selection == "q":
             sys.exit(0)
         for x in list_selections:
             if type(x) == int:
@@ -158,7 +156,7 @@ class Chips:
     
         
         self.board = [1,2,3,4,5,6,7,8,9,10]
-        self.current_board() #need to create a current board method that shows the current board
+        self.current_board 
         
         while self.game_over() == False:
                  
@@ -195,7 +193,7 @@ class Chips:
                     .replace("<NAME0>", self.names[0])
                     .replace("<SP>", " "*len(self.names[1])))
         print(template.format(*(self.board[6::-1]+self.board[7:])))
-        sleep()
+        sleep(pause)
     
 def parse_args(arg):
     parser = ArgumentParser()
