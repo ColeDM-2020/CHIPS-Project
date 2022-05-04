@@ -12,10 +12,10 @@ TERM = Terminal()
 
 PCOLOR = TERM.red1 
 
-SLOT = "{:1}"
+SLOT = "{:>0}"
 TEMPLATE = f"""{TERM.home+TERM.clear}\
 <SP> {PCOLOR} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
-<SP>  {PCOLOR} <NAME> a b c d e f g h i j"""
+{PCOLOR} <NAME> a  b  c  d  e  f  g  h  i  j {TERM.normal}"""
 
 PAUSE = 0.2
 
@@ -155,15 +155,13 @@ class Chips:
         Ask if they want to play again and call play_again()"""
         
         self.board = [1,2,3,4,5,6,7,8,9,10]
-        self.current_board
+        self.current_board()
         
-        while self.game_over() == False:
+        while self.game_over() == True:
                  
             for x in list_selections:
                 if x in self.board:
-                    self.board.remove(x)
-                    
-        print(self.current_board())
+                    self.board[x] = 0
 
     def play_round(self):
     
@@ -215,8 +213,9 @@ class Chips:
          
          """
         template = (TEMPLATE
-                    .replace("<SP>", " "*len(self.names[0]))).replace("<NAME>", self.names[0])
-        print(template.format(*(self.board[9:])))
+                    .replace("<SP>", " "*len(self.names[0]))
+                    .replace("<NAME>", self.names[0]))
+        print(template.format((self.board[9:])))
         sleep(pause)
     
 def parse_args(arg):
