@@ -150,7 +150,7 @@ class Chips:
         """Calculate player's score"""
         return sum(self.board[0:9])
         
-    def play(self, name, list_selections = get_move):
+    def play(self, list_selections = get_move):
         """Manage game play
         Ask if they want to play again and call play_again()"""
         
