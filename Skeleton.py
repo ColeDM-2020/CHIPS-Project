@@ -136,23 +136,26 @@ class Chips:
         """
         roll = Dice()
         
-        if value != roll.addroll():
+        if value != roll.addroll:
             raise ValueError("Please pick chip(s) that add up to the sum of your roll")
         
-        #Make sure they only pick avaiable spots on the board or else raise error
-    def state(self):
-        return GameState(self.func, self.score, self.number)   
+        #Make sure they only pick avaiable spots on the board or else raise error 
     
-    def game_over():
+    def game_over(self):
         """Determine whether a round is over"""
-        pass
+        if sum(self.board[0:9]) == 0:
+            return f"Your final score was {self.score}."
     
     def score(self):
         """Calculate player's score"""
+<<<<<<< HEAD
         
         pass
+=======
+        return sum(self.board[0:9])
+>>>>>>> a39997f62d5df54564849c90903008d5734cb838
         
-    def play(self, score, list_selections = get_move()):
+    def play(self, score, list_selections = get_move):
         """Manage game play
         Ask if they want to play again and call play_again()"""
     
@@ -191,7 +194,6 @@ class Chips:
          """Displays the board in the terminal and pauses momentarily.
          
          """
-
         template = (TEMPLATE
                     .replace("<NAME0>", self.names[0])
                     .replace("<SP>", " "*len(self.names[1])))
