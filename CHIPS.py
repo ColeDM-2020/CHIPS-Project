@@ -84,7 +84,8 @@ class Chips:
     def valid_move(self):
         """This method checks whether a player is allowed to play from a particular chip.
         
-        Args: value(int): the sum of the player's selection
+        Args: 
+            value (int): the sum of the player's selection
         """
         roll = Dice()
         value = self.func.selection1 + self.func.selection2
