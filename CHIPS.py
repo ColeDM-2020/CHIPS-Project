@@ -83,7 +83,6 @@ class One(Get_Move):
 class Two(Get_Move):
     
     def turn(self, c = Dice()):
-        print(c.rolldice())
         selection2 = ((input(f"""{self.name}, select a second chip or enter 0. (or enter q to quit):""" ))
                     .lower()
                     .strip())
@@ -112,6 +111,7 @@ class Chips:
     
     def play_round(self):
         self.board = [0,1,2,3,4,5,6,7,8,9,10]
+        print(self.board)
         self.current_board()
         
         if self.chip0 in self.board:
@@ -143,32 +143,26 @@ class Chips:
         sleep(pause)
         
     def play(self):
-        print("hi")
-        """while self.game_over is False:
+        self.play_round()
+        """if self.game_over is False:
             self.play_round()
             print(self.current_board())
         if self.game_over is True:
             print(f"{self.player}, you win! Your final score is 0.")"""
             
-    def playay(self):        
-        with TERM.fullscreen():
-            while True:
-                try:
-                    self.play_round()
-                except SystemExit:
-                    print("Thanks for playing!")
-                    sleep(PAUSE*3)
-                    raise
+                
             
 def main(player):
     roll = Dice
     roll.rolldice
     roll.addroll
-    a = Get_Move
+    a = Get_Move(player)
     b = One(Get_Move)
+    b.turn()
     c = Two(Get_Move)
-    game = Chips(a, b.turn, c.turn)
-    game.playay()
+    c.turn()
+    game = Chips(str(player), b.turn, c.turn)
+    game.play()
         
      
  
