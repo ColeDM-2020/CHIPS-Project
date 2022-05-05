@@ -143,11 +143,12 @@ class Chips:
         sleep(pause)
         
     def play(self):
-        while self.game_over == False:
+        print("hi")
+        """while self.game_over is False:
             self.play_round()
             print(self.current_board())
-        if self.game_over == True:
-            print(f"{self.player}, you win! Your final score is 0.")
+        if self.game_over is True:
+            print(f"{self.player}, you win! Your final score is 0.")"""
             
     def playay(self):        
         with TERM.fullscreen():
@@ -159,18 +160,24 @@ class Chips:
                     sleep(PAUSE*3)
                     raise
             
-def main(player, chip0, chip1):
-    pass
+def main(player):
+    roll = Dice
+    roll.rolldice
+    roll.addroll
+    a = Get_Move
+    b = One(Get_Move)
+    c = Two(Get_Move)
+    game = Chips(a, b.turn, c.turn)
+    game.playay()
+        
      
  
 def parse_args(arglist):
     parser = ArgumentParser()   
     parser.add_argument("player", nargs="*", help="player names")
-    parser.add_argument("chip0", nargs="*", help="player names")
-    parser.add_argument("chip1", nargs="*", help="player names")
     return parser.parse_args(arglist)
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
-    main(args.player, args.chip0, args.chip1)
+    main(args.player)
 
