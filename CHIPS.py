@@ -62,6 +62,7 @@ class Dice:
     
     
     
+      
     
 def current_board(self, pause=PAUSE):
         """Displays the board in the terminal and pauses momentarily.
