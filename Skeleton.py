@@ -162,14 +162,9 @@ class Chips:
             for x in list_selections:
                 if x in self.board:
                     self.board.remove(x)
-<<<<<<< HEAD
-                        
-            #need to update score here       
-=======
                     
         print (self.current_board)
                           
->>>>>>> 434777b02b049a309a6b769af14ab9ee542c526d
         
     """def __str__(self):
         result = [self.board, 
@@ -210,4 +205,5 @@ if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
     game = Chips(args.name)
     game.play()
-    
+
+
