@@ -56,8 +56,8 @@ class Dice:
 
 class Get_Move:
     
-    def __init__(self, player):
-        self.names = str(player)
+    def __init__(self, name):
+        self.names = name
         
     def turn(self, board):
         """Take a turn.
@@ -83,7 +83,7 @@ class One(Get_Move):
 class Two(Get_Move):
     
     def turn(self, c = Dice()):
-        selection2 = ((input(f"""{self.name}, select a second chip or enter 0. (or enter q to quit):""" ))
+        selection2 = ((input(f"""{self.names}, select a second chip or enter 0. (or enter q to quit):""" ))
                     .lower()
                     .strip())
         if selection2 == "q":
