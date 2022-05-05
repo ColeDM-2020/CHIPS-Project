@@ -56,9 +56,9 @@ class Dice:
 
 class Get_Move:
     
-    def __init__(self, name):
-        self.name = name
-    
+    def __init__(self, player):
+        self.names = str(player)
+        
     def turn(self, board):
         """Take a turn.
         
@@ -74,7 +74,7 @@ class One(Get_Move):
     
     def turn(self, c = Dice()):
         print(c.rolldice())
-        selection1 = ((input(f"""{self.name}, please select your first chip. (or enter q to quit):""" ))
+        selection1 = ((input(f"""{self.names}, please select your first chip. (or enter q to quit):""" ))
                     .lower()
                     .strip())
         if selection1 == "q":
@@ -84,7 +84,7 @@ class Two(Get_Move):
     
     def turn(self, c = Dice()):
         print(c.rolldice())
-        selection2 = ((input(f"""{self.name}, select a second chip or enter 0. (or enter q to quit):""" ))
+        selection2 = ((input(f"""{self.names}, select a second chip or enter 0. (or enter q to quit):""" ))
                     .lower()
                     .strip())
         if selection2 == "q":
@@ -135,7 +135,7 @@ class Chips:
     def current_board(self, pause=PAUSE):
         """Displays the board in the terminal and pauses momentarily.
          
-         """
+        """
         template = (TEMPLATE
                     .replace("<NAME>", self.names)
                     .replace("<SP>", " "*len(self.names[1])))
@@ -144,11 +144,11 @@ class Chips:
         
     def play(self):
         print("hi")
-        """while self.game_over is False:
+        while self.game_over is False:
             self.play_round()
             print(self.current_board())
         if self.game_over is True:
-            print(f"{self.player}, you win! Your final score is 0.")"""
+            print(f"{self.names}, you win! Your final score is 0.")
             
     def playay(self):        
         with TERM.fullscreen():
