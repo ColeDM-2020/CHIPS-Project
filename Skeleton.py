@@ -14,13 +14,8 @@ PCOLOR = TERM.red1
 
 SLOT = "{:>2}"
 TEMPLATE = f"""{TERM.home+TERM.clear}\
-<<<<<<< HEAD
-<SP>  {PCOLOR}\u2193  a b c d e f g h i j  \u2190
-<SP> {PCOLOR} <NAME> {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}"""
-=======
 <SP> {PCOLOR} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
 <SP>  {PCOLOR} <NAME> a b c d e f g h i j"""
->>>>>>> 1bdc68c4fc347b60694ac2464904b1acf3370825
 
 PAUSE = 0.2
 
@@ -48,16 +43,16 @@ class Dice:
         dice = print(f"Dice 1 rolled a: {self.dice1} \n Dice 2 rolled a: {self.dice2}") 
         return dice
     
-    def addroll(self):
-        """Adding the two dice together to return to the user.
+    """def addroll(self):
+        Adding the two dice together to return to the user.
         
         Returns:
             int : The sum of the two dice rolls. 
         
-        """
+        
         
         result = (self.dice1 + self.dice2)
-        return result
+        return result"""
 
 
 def get_move(game, player):
@@ -67,7 +62,7 @@ def get_move(game, player):
         player (): The player. 
     
     """
-    list_selections = list_selections
+    
     
     while True:
         print()
@@ -76,11 +71,11 @@ def get_move(game, player):
                                         "(or enter q to quit):" )))
                     .lower()
                     .strip())
-        
-        list_selections = list((int,selection().split()))
-        
         if selection == "q":
             sys.exit(0)
+        else:
+            return selection
+        """list_selections = list((int,selection().split())) 
         for x in list_selections:
             if type(x) == int:
                 return list_selections
@@ -94,7 +89,7 @@ def get_move(game, player):
                 if x != int:
                     raise ValueError("Please enter a number.")
         except ValueError as e:
-                    print (e)
+                    print (e)"""
         
 
 """class GameState:
@@ -129,10 +124,11 @@ def get_move(game, player):
 
 class Chips:
     """check if the dice value matches the values of get_move"""
-    def __init__(self, player, func = get_move):
+    def __init__(self, player, dice, func = get_move):
         self.names = player
         self.func = func
         self.board = []
+        self.dice = dice
         
     def valid_move(self, value):
         """This method checks whether a player is allowed to play from a particular chip.
@@ -148,59 +144,26 @@ class Chips:
     
     def game_over(self):
         """Determine whether a round is over"""
-        if sum(self.board[0:9]) == 0:
-            return f"Your final score was {self.score}."
+        return sum(self.board[0:9]) == 0
+            
     
     def score(self):
         """Calculate player's score"""
         return sum(self.board[0:9])
         
-    def play_round(self, list_selections = get_move):
+    def play(self):
         """Manage game play
         Ask if they want to play again and call play_again()"""
-<<<<<<< HEAD
-    
-
-=======
         
->>>>>>> 1bdc68c4fc347b60694ac2464904b1acf3370825
         self.board = [1,2,3,4,5,6,7,8,9,10]
-        self.current_board
+        
         
         while self.game_over() == False:
                  
-            for x in list_selections:
-                if x in self.board:
-                    self.board.remove(x)
-<<<<<<< HEAD
-                    print (self.current_board)
-    def play(self):
-        """Manage game play.
-=======
-<<<<<<< HEAD
+                if self.func in self.board:
+                    self.board[self.func] = 0
+                    print(self.board)
                         
-            #need to update score here       
-=======
-                    
-        print (self.current_board)
-                          
->>>>>>> 434777b02b049a309a6b769af14ab9ee542c526d
->>>>>>> 1bdc68c4fc347b60694ac2464904b1acf3370825
-        
-        After each round, ask players if they would like to play again.
-        
-        Side effects:
-            Displays information in the terminal.
-            Calls methods that modify self.board.
-        """
-        with TERM.fullscreen():
-            while True:
-                try:
-                    self.play_round()
-                except SystemExit:
-                    print("Thanks for playing!")
-                    sleep(PAUSE*3)
-                    raise                      
         
     def __str__(self):
         result = [self.board, 
@@ -221,24 +184,32 @@ class Chips:
         else:
             print(fThe game is not over.)"""
             
-    def current_board(self, pause=PAUSE):
-        """Displays the board in the terminal and pauses momentarily.
+    """def current_board(self, pause=PAUSE):
+        Displays the board in the terminal and pauses momentarily.
          
-         """
+         
         template = (TEMPLATE
                     .replace("<NAME0>", self.names[0])
                     .replace("<SP>", " "*len(self.names[1])))
         print(template.format(*(self.board[6::-1]+self.board[7:])))
-        sleep(pause)
+        sleep(pause)"""
+def main(player, dice):
+    dice = Dice
+    game =Chips(player, dice)
+    game.play()
     
 def parse_args(arg):
     parser = ArgumentParser()
     parser.add_argument("name", help="the first player's name")
+    parser.add_argument("dice", help = "stuff")
     return parser.parse_args(arg)
+
+
 
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
-    game = Chips(args.name)
-    game.play()
+    main(args.name, args.dice)
+
+    
     
