@@ -247,13 +247,11 @@ def main(player, dice):
     dice = Dice
     game =Chips(player, dice)
     game.play()
-=======
                     .replace("<SP>", " "*len(self.names[0]))
                     .replace("<NAME>", self.names[0]))
         print(template.format((self.board[9:])))
->>>>>>> e57eae328b85d128cf4cd6618ea72ee9eb4d4633
         sleep(pause)
->>>>>>> 941085f4402094d1d33828d5d9ff72f7319c9593
+
     
 def parse_args(arg):
     parser = ArgumentParser()
