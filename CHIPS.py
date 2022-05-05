@@ -4,6 +4,8 @@ import sys
 import random
 from time import sleep
 
+from parso import ParserSyntaxError
+
 TERM = Terminal()
 
 PCOLOR = TERM.red2       
@@ -134,6 +136,13 @@ class Chips:
                     .replace("<SP>", " "*len(self.names[1])))
         print(template.format(*(self.board[0::-1]+self.board[1:])))
         sleep(pause)
+<<<<<<< HEAD
+
+
+    
+    
+    
+=======
         
     def play(self):
         print("hi")
@@ -164,6 +173,7 @@ def parse_args(arglist):
     parser = ArgumentParser()   
     parser.add_argument("player", nargs="*", help="player names")
     return parser.parse_args(arglist)
+>>>>>>> 7e94b27d741b106080b9e37abd130d30fecc71c2
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
