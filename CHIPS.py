@@ -78,7 +78,8 @@ def get_move(player):
     def valid_move(self):
         """This method checks whether a player is allowed to play from a particular chip.
         
-        Args: value(int): the sum of the player's selection
+        Args: 
+            value (int): the sum of the player's selection
         """
         roll = Dice()
         value = selection1 + selection2
