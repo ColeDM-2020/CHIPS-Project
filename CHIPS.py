@@ -4,29 +4,33 @@ import sys
 import random
 from time import sleep
 
-from parso import ParserSyntaxError
-
 TERM = Terminal()
 
-PCOLOR = TERM.red2       
-NCOLOR = TERM.cyan2
-PNAME = TERM.green3
+PCOLOR = TERM.red1       
+NCOLOR = TERM.cyan1
 
 SLOT = "{:>0}"
 TEMPLATE = f"""{TERM.home+TERM.clear}
+<<<<<<< HEAD
 <SP>{PCOLOR}<NAME>  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}
 <SP>{NCOLOR}------------------------------------
 {PNAME}       a  b  c  d  e  f  g  h  i  j {TERM.normal}"""
+=======
+<SP>{NCOLOR}<NAME>:{PCOLOR}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}
+{TERM.normal}"""
+>>>>>>> 053cfd1716b89032fb6aa549e1eb770a5cbd0781
 
 PAUSE = 0.2
 
 NUM0 = "abcdefghij"
-NUM1 = [9]
+NUM1 = [10]
 
 class Dice:
+    
     def __init__(self, dice1 = random.randint(1,6), dice2 = random.randint(1,6)):
         self.dice1 = dice1
         self.dice2 = dice2
+        
     def rolldice(self):
         """"rolls two dice
     
@@ -57,6 +61,7 @@ class Dice:
         return result
 
 class Get_Move:
+    
     def __init__(self, name):
         self.name = name
     
@@ -70,7 +75,9 @@ class Get_Move:
             str: the player's guess (a letter or a word).
         """
         raise NotImplementedError
+    
 class One(Get_Move):
+    
     def turn(self, c = Dice()):
         print(c.rolldice())
         selection1 = ((input(f"""{self.name}, please select your first chip. (or enter q to quit):""" ))
@@ -80,6 +87,7 @@ class One(Get_Move):
             sys.exit(0)
             
 class Two(Get_Move):
+    
     def turn(self, c = Dice()):
         print(c.rolldice())
         selection2 = ((input(f"""{self.name}, select a second chip or enter 0. (or enter q to quit):""" ))
@@ -89,7 +97,12 @@ class Two(Get_Move):
             sys.exit(0)
         
 class Chips:
+<<<<<<< HEAD
     def __init__(self, player, chip0, chip1):
+=======
+    
+    def __init__(self, player, chip0 = One(Get_Move), chip1 = Two(Get_Move)):
+>>>>>>> 053cfd1716b89032fb6aa549e1eb770a5cbd0781
         self.names = player
         self.chip0 = chip0
         self.chip1 = chip1
@@ -110,10 +123,12 @@ class Chips:
     def play_round(self):
         self.board = [0,1,2,3,4,5,6,7,8,9,10]
         self.current_board()
+        
         if self.chip0 in self.board:
             self.board[self.chip0] = 0
         else:
             print("Your chip has already been chosen pick again")
+            
         if self.chip1 in self.board:
             self.board[self.chip1] = 0
         else:
@@ -136,13 +151,6 @@ class Chips:
                     .replace("<SP>", " "*len(self.names[1])))
         print(template.format(*(self.board[0::-1]+self.board[1:])))
         sleep(pause)
-<<<<<<< HEAD
-
-
-    
-    
-    
-=======
         
     def play(self):
         print("hi")
@@ -154,8 +162,18 @@ class Chips:
             
     def playay(self):        
         with TERM.fullscreen():
+<<<<<<< HEAD
                 self.play()
                 
+=======
+            while True:
+                try:
+                    self.play_round()
+                except SystemExit:
+                    print("Thanks for playing!")
+                    sleep(PAUSE*3)
+                    raise
+>>>>>>> 053cfd1716b89032fb6aa549e1eb770a5cbd0781
             
 def main(player):
     roll = Dice
@@ -173,7 +191,6 @@ def parse_args(arglist):
     parser = ArgumentParser()   
     parser.add_argument("player", nargs="*", help="player names")
     return parser.parse_args(arglist)
->>>>>>> 7e94b27d741b106080b9e37abd130d30fecc71c2
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
