@@ -56,6 +56,7 @@ class Dice:
         result = (self.dice1 + self.dice2)
         return result
     
+<<<<<<< HEAD
 def get_move(player):
     """Asks the player what chips they want to choose.
     
@@ -74,3 +75,22 @@ def get_move(player):
     if selection1 == "q" or selection2 == "q":
         sys.exit(0)
     
+=======
+    
+    
+    
+    
+    
+    
+    
+def current_board(self, pause=PAUSE):
+        """Displays the board in the terminal and pauses momentarily.
+         
+         """
+        template = (TEMPLATE
+                    .replace("<NAME>", self.names)
+                    .replace("<SP>", " "*len(self.names[1])))
+        print(template.format(*(self.board[0::-1]+self.board[1:])))
+        sleep(pause)
+        
+>>>>>>> 95e043118dc3c7ec3162846d05789f498549e856
