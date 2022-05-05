@@ -11,14 +11,8 @@ NCOLOR = TERM.cyan1
 
 SLOT = "{:>0}"
 TEMPLATE = f"""{TERM.home+TERM.clear}
-<<<<<<< HEAD
-<SP>{PCOLOR}<NAME>  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}
-<SP>{NCOLOR}------------------------------------
-{PNAME}       a  b  c  d  e  f  g  h  i  j {TERM.normal}"""
-=======
 <SP>{NCOLOR}<NAME>:{PCOLOR}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}
 {TERM.normal}"""
->>>>>>> 053cfd1716b89032fb6aa549e1eb770a5cbd0781
 
 PAUSE = 0.2
 
@@ -97,12 +91,8 @@ class Two(Get_Move):
             sys.exit(0)
         
 class Chips:
-<<<<<<< HEAD
-    def __init__(self, player, chip0, chip1):
-=======
     
     def __init__(self, player, chip0 = One(Get_Move), chip1 = Two(Get_Move)):
->>>>>>> 053cfd1716b89032fb6aa549e1eb770a5cbd0781
         self.names = player
         self.chip0 = chip0
         self.chip1 = chip1
@@ -162,10 +152,6 @@ class Chips:
             
     def playay(self):        
         with TERM.fullscreen():
-<<<<<<< HEAD
-                self.play()
-                
-=======
             while True:
                 try:
                     self.play_round()
@@ -173,7 +159,6 @@ class Chips:
                     print("Thanks for playing!")
                     sleep(PAUSE*3)
                     raise
->>>>>>> 053cfd1716b89032fb6aa549e1eb770a5cbd0781
             
 def main(player):
     roll = Dice
