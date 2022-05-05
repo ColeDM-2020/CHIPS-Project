@@ -58,9 +58,26 @@ class Dice:
         result = (self.dice1 + self.dice2)
         return result
     
+def get_move(player):
+    """Asks the player what chips they want to choose.
+    
+    Args:
+        player (): The player. 
+    
+    """
+    c = Dice()
+    print(c.rolldice())
+    selection1 = ((input(f"""{player}, please select your first chip. (or enter q to quit):""" ))
+                .lower()
+                .strip())
+    selection2 = ((input(f"""{player}, select a second chip or enter 0. (or enter q to quit):""" ))
+                .lower()
+                .strip())
+    if selection1 == "q" or selection2 == "q":
+        sys.exit(0)   
     
     
-    def valid_move(self):
+def valid_move(self):
         """This method checks whether a player is allowed to play from a particular chip.
         
         Args: value(int): the sum of the player's selection
