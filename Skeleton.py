@@ -12,10 +12,10 @@ TERM = Terminal()
 
 PCOLOR = TERM.red1 
 
-SLOT = "{:>2}"
+SLOT = "{:>0}"
 TEMPLATE = f"""{TERM.home+TERM.clear}\
 <SP> {PCOLOR} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
-<SP>  {PCOLOR} <NAME> a b c d e f g h i j"""
+{PCOLOR} <NAME> a  b  c  d  e  f  g  h  i  j {TERM.normal}"""
 
 PAUSE = 0.2
 
@@ -156,14 +156,50 @@ class Chips:
         Ask if they want to play again and call play_again()"""
         
         self.board = [1,2,3,4,5,6,7,8,9,10]
+<<<<<<< HEAD
         
+=======
+        self.current_board()
+>>>>>>> 941085f4402094d1d33828d5d9ff72f7319c9593
         
-        while self.game_over() == False:
+        while self.game_over() == True:
                  
+<<<<<<< HEAD
                 if self.func in self.board:
                     self.board[self.func] = 0
                     print(self.board)
                         
+=======
+            for x in list_selections:
+                if x in self.board:
+                    self.board[x] = 0
+
+    def play_round(self):
+    
+        with TERM.fullscreen():
+            while True:
+                try:
+                    self.play()
+                    if not self.play_again():
+                        sys.exit(0)
+                except SystemExit:
+                    print("Thanks for playing!")
+                    sleep(PAUSE*3)
+                    raise
+                
+    def play_again():
+        
+        print()
+        while True:
+            response = (input("Would you like to play again (y/n)? ")
+                        .strip()
+                        .lower()[0])
+            if response not in "ny":
+                print("Please type 'y' or 'n'.")
+                continue
+            return response == "y"
+                          
+>>>>>>> 941085f4402094d1d33828d5d9ff72f7319c9593
         
     def __str__(self):
         result = [self.board, 
@@ -189,6 +225,7 @@ class Chips:
          
          
         template = (TEMPLATE
+<<<<<<< HEAD
                     .replace("<NAME0>", self.names[0])
                     .replace("<SP>", " "*len(self.names[1])))
         print(template.format(*(self.board[6::-1]+self.board[7:])))
@@ -197,6 +234,12 @@ def main(player, dice):
     dice = Dice
     game =Chips(player, dice)
     game.play()
+=======
+                    .replace("<SP>", " "*len(self.names[0]))
+                    .replace("<NAME>", self.names[0]))
+        print(template.format((self.board[9:])))
+        sleep(pause)
+>>>>>>> 941085f4402094d1d33828d5d9ff72f7319c9593
     
 def parse_args(arg):
     parser = ArgumentParser()

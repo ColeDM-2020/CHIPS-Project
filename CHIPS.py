@@ -6,6 +6,23 @@ import random
 import re
 from time import sleep
 
+TERM = Terminal()
+
+PCOLOR = TERM.red2       
+NCOLOR = TERM.cyan2
+PNAME = TERM.green3
+
+SLOT = "{:>0}"
+TEMPLATE = f"""{TERM.home+TERM.clear}\
+<SP>{PCOLOR}<NAME>  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}
+<SP>{NCOLOR}------------------------------------
+{PNAME}       a  b  c  d  e  f  g  h  i  j {TERM.normal}"""
+
+PAUSE = 0.2
+
+NUM0 = "abcdefghij"
+NUM1 = [9]
+
 class Dice:
     def __init__(self, dice1 = random.randint(1,6), dice2 = random.randint(1,6)):
         self.dice1 = dice1
