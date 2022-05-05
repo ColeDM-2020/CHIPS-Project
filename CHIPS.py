@@ -55,3 +55,21 @@ class Dice:
         
         result = (self.dice1 + self.dice2)
         return result
+    
+    
+    
+    
+    
+    
+    
+    
+def current_board(self, pause=PAUSE):
+        """Displays the board in the terminal and pauses momentarily.
+         
+         """
+        template = (TEMPLATE
+                    .replace("<NAME>", self.names)
+                    .replace("<SP>", " "*len(self.names[1])))
+        print(template.format(*(self.board[0::-1]+self.board[1:])))
+        sleep(pause)
+        

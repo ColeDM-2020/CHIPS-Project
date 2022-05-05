@@ -10,12 +10,15 @@ from time import sleep
 
 TERM = Terminal()
 
-PCOLOR = TERM.red1 
+PCOLOR = TERM.red2       
+NCOLOR = TERM.cyan2
+PNAME = TERM.green3
 
 SLOT = "{:>0}"
 TEMPLATE = f"""{TERM.home+TERM.clear}\
-<SP> {PCOLOR} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
-{PCOLOR} <NAME> a  b  c  d  e  f  g  h  i  j {TERM.normal}"""
+<SP>{PCOLOR}<NAME>  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}
+<SP>{NCOLOR}------------------------------------
+{PNAME}       a  b  c  d  e  f  g  h  i  j {TERM.normal}"""
 
 PAUSE = 0.2
 
@@ -185,11 +188,7 @@ class Chips:
         get_move(self.game, self.names)
        
         self.board = [1,2,3,4,5,6,7,8,9,10]
-<<<<<<< HEAD
-        
-=======
         self.current_board()
->>>>>>> 941085f4402094d1d33828d5d9ff72f7319c9593
         
         while self.game_over() == True:
                  
@@ -218,6 +217,8 @@ class Chips:
 =======
                     self.board[x] = 0
 
+<<<<<<< HEAD
+=======
     def play_round(self):
     
         with TERM.fullscreen():
@@ -275,6 +276,11 @@ class Chips:
          
         template = (TEMPLATE
 <<<<<<< HEAD
+                    .replace("<NAME>", self.names)
+                    .replace("<SP>", " "*len(self.names[1])))
+        print(template.format(*(self.board[0::-1]+self.board[1:])))
+=======
+<<<<<<< HEAD
                     .replace("<NAME0>", self.names[0])
                     .replace("<SP>", " "*len(self.names[1])))
         print(template.format(*(self.board[6::-1]+self.board[7:])))
@@ -287,6 +293,7 @@ def main(player, dice):
                     .replace("<SP>", " "*len(self.names[0]))
                     .replace("<NAME>", self.names[0]))
         print(template.format((self.board[9:])))
+>>>>>>> e57eae328b85d128cf4cd6618ea72ee9eb4d4633
         sleep(pause)
 >>>>>>> 941085f4402094d1d33828d5d9ff72f7319c9593
     
