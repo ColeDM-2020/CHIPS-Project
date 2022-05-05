@@ -139,13 +139,6 @@ class Chips:
                     .replace("<SP>", " "*len(self.names[1])))
         print(template.format(*(self.board[0::-1]+self.board[1:])))
         sleep(pause)
-<<<<<<< HEAD
-
-
-    
-    
-    
-=======
         
     def play(self):
         while self.game_over == False:
@@ -174,7 +167,6 @@ def parse_args(arglist):
     parser.add_argument("chip0", nargs="*", help="player names")
     parser.add_argument("chip1", nargs="*", help="player names")
     return parser.parse_args(arglist)
->>>>>>> 7e94b27d741b106080b9e37abd130d30fecc71c2
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
