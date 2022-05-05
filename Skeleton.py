@@ -50,16 +50,16 @@ class Dice:
         dice = print(f"Dice 1 rolled a: {self.dice1} \n Dice 2 rolled a: {self.dice2}") 
         return dice
     
-    def addroll(self):
-        """Adding the two dice together to return to the user.
+    """def addroll(self):
+        Adding the two dice together to return to the user.
         
         Returns:
             int : The sum of the two dice rolls. 
         
-        """
+        
         
         result = (self.dice1 + self.dice2)
-        return result
+        return result"""
 
 
 def get_move(game, player):
@@ -68,9 +68,14 @@ def get_move(game, player):
     Args:
         player (): The player. 
     
+<<<<<<< HEAD
     
  
     list_selections = list_selections
+=======
+    """
+    
+>>>>>>> e57eae328b85d128cf4cd6618ea72ee9eb4d4633
     
     Dice.rolldice
     Dice.addroll
@@ -82,11 +87,11 @@ def get_move(game, player):
                                         "(or enter q to quit):" )))
                     .lower()
                     .strip())
-        
-        list_selections = list((int,selection().split()))
-        
         if selection == "q":
             sys.exit(0)
+        else:
+            return selection
+        """list_selections = list((int,selection().split())) 
         for x in list_selections:
             if type(x) == int:
                 return x
@@ -100,16 +105,25 @@ def get_move(game, player):
                 if x != int:
                     raise ValueError("Please enter a number.")
         except ValueError as e:
+<<<<<<< HEAD
                     print (e) """
+=======
+                    print (e)"""
+>>>>>>> e57eae328b85d128cf4cd6618ea72ee9eb4d4633
         
 
 
 class Chips:
     """check if the dice value matches the values of get_move"""
+<<<<<<< HEAD
     def __init__(self, game, player, func = get_move):
+=======
+    def __init__(self, player, dice, func = get_move):
+>>>>>>> e57eae328b85d128cf4cd6618ea72ee9eb4d4633
         self.names = player
         self.func = func
         self.board = []
+        self.dice = dice
         
     def get_move(self, player):
         """Asks the player what chips they want to choose.
@@ -157,8 +171,8 @@ class Chips:
     
     def game_over(self):
         """Determine whether a round is over"""
-        if sum(self.board[0:9]) == 0:
-            return f"Your final score was {self.score}."
+        return sum(self.board[0:9]) == 0
+            
     
     def score(self):
         """Calculate player's score"""
@@ -171,11 +185,25 @@ class Chips:
         get_move(self.game, self.names)
        
         self.board = [1,2,3,4,5,6,7,8,9,10]
+<<<<<<< HEAD
+        
+=======
         self.current_board()
+>>>>>>> 941085f4402094d1d33828d5d9ff72f7319c9593
         
         while self.game_over() == True:
                  
+<<<<<<< HEAD
             for x in self.list_selections:
+=======
+<<<<<<< HEAD
+                if self.func in self.board:
+                    self.board[self.func] = 0
+                    print(self.board)
+                        
+=======
+            for x in list_selections:
+>>>>>>> e57eae328b85d128cf4cd6618ea72ee9eb4d4633
                 if x in self.board:
 <<<<<<< HEAD
                     self.board[x] = 0
@@ -216,9 +244,13 @@ class Chips:
             return response == "y"
 >>>>>>> 941085f4402094d1d33828d5d9ff72f7319c9593
                           
+<<<<<<< HEAD
 >>>>>>> b9121b0c401060ef157897087004b428ddb424a8
+=======
+>>>>>>> 941085f4402094d1d33828d5d9ff72f7319c9593
+>>>>>>> e57eae328b85d128cf4cd6618ea72ee9eb4d4633
         
-    """def __str__(self):
+    def __str__(self):
         result = [self.board, 
                   f"{self.selection1} and {self.selection2}, both chips have been removed from the board."]
         for name, score in self.score.items():
@@ -228,34 +260,55 @@ class Chips:
         return "\n".join(result)
     
     def match(self, s):
-        return bool(re.search(self.expr, s.strip()))
+        return bool(re.search(self.expr, s.strip()))   
         
-    print(self.state().board)
+        """print(self.state().board)
         outcome = self.outcome()
         if outcome == "win":
             print(f"Your score for the round was {self.score()}")
         else:
             print(fThe game is not over.)"""
             
-    def current_board(self, pause=PAUSE):
-        """Displays the board in the terminal and pauses momentarily.
+    """def current_board(self, pause=PAUSE):
+        Displays the board in the terminal and pauses momentarily.
          
-         """
+         
         template = (TEMPLATE
+<<<<<<< HEAD
+                    .replace("<NAME0>", self.names[0])
+                    .replace("<SP>", " "*len(self.names[1])))
+        print(template.format(*(self.board[6::-1]+self.board[7:])))
+        sleep(pause)"""
+def main(player, dice):
+    dice = Dice
+    game =Chips(player, dice)
+    game.play()
+=======
                     .replace("<SP>", " "*len(self.names[0]))
                     .replace("<NAME>", self.names[0]))
         print(template.format((self.board[9:])))
         sleep(pause)
+>>>>>>> 941085f4402094d1d33828d5d9ff72f7319c9593
     
 def parse_args(arg):
     parser = ArgumentParser()
     parser.add_argument("name", help="the first player's name")
+    parser.add_argument("dice", help = "stuff")
     return parser.parse_args(arg)
+
+
 
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
+<<<<<<< HEAD
+    main(args.name, args.dice)
+
+    
+    
+=======
     game = Chips(args.name)
     game.play()
 
 
+>>>>>>> b9121b0c401060ef157897087004b428ddb424a8
