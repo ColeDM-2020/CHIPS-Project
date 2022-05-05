@@ -10,12 +10,15 @@ from time import sleep
 
 TERM = Terminal()
 
-PCOLOR = TERM.red1 
+PCOLOR = TERM.red2       
+NCOLOR = TERM.cyan2
+PNAME = TERM.green3
 
 SLOT = "{:>0}"
 TEMPLATE = f"""{TERM.home+TERM.clear}\
-<SP> {PCOLOR} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT} {SLOT}
-{PCOLOR} <NAME> a  b  c  d  e  f  g  h  i  j {TERM.normal}"""
+<SP>{PCOLOR}<NAME>  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}
+<SP>{NCOLOR}------------------------------------
+{PNAME}       a  b  c  d  e  f  g  h  i  j {TERM.normal}"""
 
 PAUSE = 0.2
 
@@ -163,31 +166,6 @@ class Chips:
                 if x in self.board:
                     self.board[x] = 0
 
-    def play_round(self):
-    
-        with TERM.fullscreen():
-            while True:
-                try:
-                    self.play()
-                    if not self.play_again():
-                        sys.exit(0)
-                except SystemExit:
-                    print("Thanks for playing!")
-                    sleep(PAUSE*3)
-                    raise
-                
-    def play_again():
-        
-        print()
-        while True:
-            response = (input("Would you like to play again (y/n)? ")
-                        .strip()
-                        .lower()[0])
-            if response not in "ny":
-                print("Please type 'y' or 'n'.")
-                continue
-            return response == "y"
-                          
         
     """def __str__(self):
         result = [self.board, 
@@ -213,9 +191,9 @@ class Chips:
          
          """
         template = (TEMPLATE
-                    .replace("<SP>", " "*len(self.names[0]))
-                    .replace("<NAME>", self.names[0]))
-        print(template.format((self.board[9:])))
+                    .replace("<NAME>", self.names)
+                    .replace("<SP>", " "*len(self.names[1])))
+        print(template.format(*(self.board[0::-1]+self.board[1:])))
         sleep(pause)
     
 def parse_args(arg):
