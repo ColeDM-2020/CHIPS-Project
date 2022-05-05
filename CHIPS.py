@@ -39,8 +39,9 @@ class Dice:
             Prints out the numbers rolled on the dice to the terminal. 
         """
     
-        dice = print(f"Dice 1 rolled a: {self.dice1} \nDice 2 rolled a: {self.dice2}") 
-        return dice
+        r = print(f"Dice 1 rolled a: {self.dice1} \nDice 2 rolled a: {self.dice2}") 
+        return r
+        
     
     def addroll(self):
         """Adding the two dice together to return to the user.
@@ -140,11 +141,14 @@ class Chips:
         self.play_round()
         print(self.current_board())
         
+<<<<<<< HEAD
         """if self.game_over is False:
             self.play_round()
             print(self.current_board())
         if self.game_over is True:
             print(f"{self.player}, you win! Your final score is 0.")"""
+=======
+>>>>>>> 14f876a4b5826df4bc9bc82d3d844e0c3dac96ed
             
                 
             
@@ -157,6 +161,7 @@ def main(player):
     c = Two(Get_Move)
     game = Chips(str(player), b.turn(), c.turn())
     game.play()
+        
         
      
  
