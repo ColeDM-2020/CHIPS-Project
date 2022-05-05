@@ -6,6 +6,8 @@ import random
 import re
 from time import sleep
 
+from parso import ParserSyntaxError
+
 TERM = Terminal()
 
 PCOLOR = TERM.red2       
@@ -104,6 +106,11 @@ def current_board(self, pause=PAUSE):
                     .replace("<NAME>", self.names)
                     .replace("<SP>", " "*len(self.names[1])))
         print(template.format(*(self.board[0::-1]+self.board[1:])))
-        sleep(pause)       
+        sleep(pause)
+
+
+    
+    
+    
 
 
