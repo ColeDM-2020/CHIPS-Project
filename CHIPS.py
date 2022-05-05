@@ -74,20 +74,14 @@ class One(Get_Move):
     
     def turn(self, c = Dice()):
         print(c.rolldice())
-        selection1 = ((input(f"""{self.name}, please select your first chip. (or enter q to quit):""" ))
-                    .lower()
-                    .strip())
-        if selection1 == "q":
-            sys.exit(0)
+        selection1 = int(input(f"""{self.name}, please select your first chip. (or enter q to quit):""" ))
+        return selection1
             
 class Two(Get_Move):
     
     def turn(self, c = Dice()):
-        selection2 = ((input(f"""{self.name}, select a second chip or enter 0. (or enter q to quit):""" ))
-                    .lower()
-                    .strip())
-        if selection2 == "q":
-            sys.exit(0)
+        selection2 = int(input(f"""{self.name}, select a second chip or enter 0. (or enter q to quit):""" ))
+        return selection2
         
 class Chips:
     
@@ -111,16 +105,16 @@ class Chips:
     
     def play_round(self):
         self.board = [0,1,2,3,4,5,6,7,8,9,10]
-        print(self.board)
-        self.current_board()
-        
+        #self.current_board()
         if self.chip0 in self.board:
             self.board[self.chip0] = 0
+            print(self.board)
         else:
             print("Your chip has already been chosen pick again")
             
         if self.chip1 in self.board:
             self.board[self.chip1] = 0
+            print(self.board)
         else:
             print("Your chip has already been chosen pick again")
 
@@ -158,10 +152,8 @@ def main(player):
     roll.addroll
     a = Get_Move(player)
     b = One(Get_Move)
-    b.turn()
     c = Two(Get_Move)
-    c.turn()
-    game = Chips(str(player), b.turn, c.turn)
+    game = Chips(str(player), b.turn(), c.turn())
     game.play()
         
      
