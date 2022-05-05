@@ -2,7 +2,6 @@ from argparse import ArgumentParser
 from blessed import Terminal
 import sys
 import random
-import re
 from time import sleep
 
 TERM = Terminal()
@@ -111,12 +110,10 @@ class Chips:
         self.current_board()
         if self.chip0 in self.board:
             self.board[self.chip0] = 0
-            return
         else:
             print("Your chip has already been chosen pick again")
         if self.chip1 in self.board:
             self.board[self.chip1] = 0
-            return
         else:
             print("Your chip has already been chosen pick again")
 
@@ -139,21 +136,17 @@ class Chips:
         sleep(pause)
         
     def play(self):
-        while self.game_over == False:
+        print("hi")
+        """while self.game_over is False:
             self.play_round()
             print(self.current_board())
-        if self.game_over == True:
-            print(f"{self.player}, you win! Your final score is 0.")
+        if self.game_over is True:
+            print(f"{self.player}, you win! Your final score is 0.")"""
             
     def playay(self):        
         with TERM.fullscreen():
-            while True:
-                try:
-                    self.play()
-                except SystemExit:
-                    print("Thanks for playing!")
-                    sleep(PAUSE*3)
-                    raise
+                self.play()
+                
             
 def main(player):
     roll = Dice
