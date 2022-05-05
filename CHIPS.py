@@ -58,26 +58,6 @@ class Dice:
         result = (self.dice1 + self.dice2)
         return result
     
-<<<<<<< HEAD
-def get_move(player):
-    """Asks the player what chips they want to choose.
-    
-    Args:
-        player (): The player. 
-    
-    """
-    c = Dice()
-    print(c.rolldice())
-    selection1 = ((input(f"""{player}, please select your first chip. (or enter q to quit):""" ))
-                .lower()
-                .strip())
-    selection2 = ((input(f"""{player}, select a second chip or enter 0. (or enter q to quit):""" ))
-                .lower()
-                .strip())
-    if selection1 == "q" or selection2 == "q":
-        sys.exit(0)
-    
-=======
     
     
     def valid_move(self):
@@ -105,4 +85,3 @@ def current_board(self, pause=PAUSE):
         print(template.format(*(self.board[0::-1]+self.board[1:])))
         sleep(pause)
         
->>>>>>> 95e043118dc3c7ec3162846d05789f498549e856
