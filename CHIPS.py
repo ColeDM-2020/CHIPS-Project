@@ -74,14 +74,20 @@ def get_move(player):
     if selection1 == "q" or selection2 == "q":
         sys.exit(0)   
     
-    
+class Chips:
+    def __init__(self, player, dice, func = get_move):
+        self.names = player
+        self.func = func
+        self.board = []
+        self.dice = dice
+        
     def valid_move(self):
         """This method checks whether a player is allowed to play from a particular chip.
         
         Args: value(int): the sum of the player's selection
         """
         roll = Dice()
-        value = selection1 + selection2
+        value = self.func.selection1 + self.func.selection2
         
         if value != roll.addroll:
             raise ValueError("Please pick chip(s) that add up to the sum of your roll")  
@@ -97,5 +103,6 @@ def current_board(self, pause=PAUSE):
                     .replace("<NAME>", self.names)
                     .replace("<SP>", " "*len(self.names[1])))
         print(template.format(*(self.board[0::-1]+self.board[1:])))
-        sleep(pause)
-        
+        sleep(pause)       
+
+
