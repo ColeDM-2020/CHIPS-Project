@@ -2,32 +2,29 @@ from argparse import ArgumentParser
 from blessed import Terminal
 import sys
 import random
-import re
 from time import sleep
-
-from parso import ParserSyntaxError
 
 TERM = Terminal()
 
-PCOLOR = TERM.red2       
-NCOLOR = TERM.cyan2
-PNAME = TERM.green3
+PCOLOR = TERM.red1       
+NCOLOR = TERM.cyan1
 
 SLOT = "{:>0}"
-TEMPLATE = f"""{TERM.home+TERM.clear}\
-<SP>{PCOLOR}<NAME>  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}
-<SP>{NCOLOR}------------------------------------
-{PNAME}       a  b  c  d  e  f  g  h  i  j {TERM.normal}"""
+TEMPLATE = f"""{TERM.home+TERM.clear}
+<SP>{NCOLOR}<NAME>:{PCOLOR}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}
+{TERM.normal}"""
 
 PAUSE = 0.2
 
 NUM0 = "abcdefghij"
-NUM1 = [9]
+NUM1 = [10]
 
 class Dice:
+    
     def __init__(self, dice1 = random.randint(1,6), dice2 = random.randint(1,6)):
         self.dice1 = dice1
         self.dice2 = dice2
+        
     def rolldice(self):
         """"rolls two dice
     
@@ -58,6 +55,7 @@ class Dice:
         return result
 
 class Get_Move:
+    
     def __init__(self, name):
         self.name = name
     
@@ -71,7 +69,9 @@ class Get_Move:
             str: the player's guess (a letter or a word).
         """
         raise NotImplementedError
+    
 class One(Get_Move):
+    
     def turn(self, c = Dice()):
         print(c.rolldice())
         selection1 = ((input(f"""{self.name}, please select your first chip. (or enter q to quit):""" ))
@@ -81,6 +81,7 @@ class One(Get_Move):
             sys.exit(0)
             
 class Two(Get_Move):
+    
     def turn(self, c = Dice()):
         print(c.rolldice())
         selection2 = ((input(f"""{self.name}, select a second chip or enter 0. (or enter q to quit):""" ))
@@ -90,6 +91,7 @@ class Two(Get_Move):
             sys.exit(0)
         
 class Chips:
+    
     def __init__(self, player, chip0 = One(Get_Move), chip1 = Two(Get_Move)):
         self.names = player
         self.chip0 = chip0
@@ -111,14 +113,14 @@ class Chips:
     def play_round(self):
         self.board = [0,1,2,3,4,5,6,7,8,9,10]
         self.current_board()
+        
         if self.chip0 in self.board:
             self.board[self.chip0] = 0
-            return
         else:
             print("Your chip has already been chosen pick again")
+            
         if self.chip1 in self.board:
             self.board[self.chip1] = 0
-            return
         else:
             print("Your chip has already been chosen pick again")
 
@@ -151,7 +153,7 @@ class Chips:
         with TERM.fullscreen():
             while True:
                 try:
-                    self.play()
+                    self.play_round()
                 except SystemExit:
                     print("Thanks for playing!")
                     sleep(PAUSE*3)
