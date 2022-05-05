@@ -172,6 +172,11 @@ class Chips:
 =======
             for x in list_selections:
                 if x in self.board:
+<<<<<<< HEAD
+                    self.board.remove(x)
+                    
+        print (self.current_board)
+=======
                     self.board[x] = 0
 
     def play_round(self):
@@ -198,6 +203,7 @@ class Chips:
                 print("Please type 'y' or 'n'.")
                 continue
             return response == "y"
+>>>>>>> 941085f4402094d1d33828d5d9ff72f7319c9593
                           
 >>>>>>> 941085f4402094d1d33828d5d9ff72f7319c9593
         
@@ -252,7 +258,14 @@ def parse_args(arg):
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
+<<<<<<< HEAD
     main(args.name, args.dice)
 
     
     
+=======
+    game = Chips(args.name)
+    game.play()
+
+
+>>>>>>> b9121b0c401060ef157897087004b428ddb424a8
