@@ -113,7 +113,7 @@ class Chips:
         self.board = [0,1,2,3,4,5,6,7,8,9,10]
         print(self.board)
         self.current_board()
-        
+        print (self.chip0)
         if self.chip0 in self.board:
             self.board[self.chip0] = 0
         else:
