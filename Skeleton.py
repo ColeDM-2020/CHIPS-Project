@@ -46,16 +46,16 @@ class Dice:
         dice = print(f"Dice 1 rolled a: {self.dice1} \n Dice 2 rolled a: {self.dice2}") 
         return dice
     
-    def addroll(self):
-        """Adding the two dice together to return to the user.
+    """def addroll(self):
+        Adding the two dice together to return to the user.
         
         Returns:
             int : The sum of the two dice rolls. 
         
-        """
+        
         
         result = (self.dice1 + self.dice2)
-        return result
+        return result"""
 
 
 def get_move(game, player):
@@ -65,7 +65,7 @@ def get_move(game, player):
         player (): The player. 
     
     """
-    list_selections = list_selections
+    
     
     while True:
         print()
@@ -74,11 +74,11 @@ def get_move(game, player):
                                         "(or enter q to quit):" )))
                     .lower()
                     .strip())
-        
-        list_selections = list((int,selection().split()))
-        
         if selection == "q":
             sys.exit(0)
+        else:
+            return selection
+        """list_selections = list((int,selection().split())) 
         for x in list_selections:
             if type(x) == int:
                 return list_selections
@@ -92,7 +92,7 @@ def get_move(game, player):
                 if x != int:
                     raise ValueError("Please enter a number.")
         except ValueError as e:
-                    print (e)
+                    print (e)"""
         
 
 """class GameState:
@@ -127,10 +127,11 @@ def get_move(game, player):
 
 class Chips:
     """check if the dice value matches the values of get_move"""
-    def __init__(self, player, func = get_move):
+    def __init__(self, player, dice, func = get_move):
         self.names = player
         self.func = func
         self.board = []
+        self.dice = dice
         
     def valid_move(self, value):
         """This method checks whether a player is allowed to play from a particular chip.
@@ -146,14 +147,14 @@ class Chips:
     
     def game_over(self):
         """Determine whether a round is over"""
-        if sum(self.board[0:9]) == 0:
-            return f"Your final score was {self.score}."
+        return sum(self.board[0:9]) == 0
+            
     
     def score(self):
         """Calculate player's score"""
         return sum(self.board[0:9])
         
-    def play(self, list_selections = get_move):
+    def play(self):
         """Manage game play
         Ask if they want to play again and call play_again()"""
         
@@ -162,12 +163,53 @@ class Chips:
         
         while self.game_over() == True:
                  
+<<<<<<< HEAD
+                if self.func in self.board:
+                    self.board[self.func] = 0
+                    print(self.board)
+                        
+=======
             for x in list_selections:
                 if x in self.board:
+<<<<<<< HEAD
+                    self.board.remove(x)
+                    
+        print (self.current_board)
+=======
                     self.board[x] = 0
 
+<<<<<<< HEAD
+=======
+    def play_round(self):
+    
+        with TERM.fullscreen():
+            while True:
+                try:
+                    self.play()
+                    if not self.play_again():
+                        sys.exit(0)
+                except SystemExit:
+                    print("Thanks for playing!")
+                    sleep(PAUSE*3)
+                    raise
+                
+    def play_again():
         
-    """def __str__(self):
+        print()
+        while True:
+            response = (input("Would you like to play again (y/n)? ")
+                        .strip()
+                        .lower()[0])
+            if response not in "ny":
+                print("Please type 'y' or 'n'.")
+                continue
+            return response == "y"
+>>>>>>> 941085f4402094d1d33828d5d9ff72f7319c9593
+                          
+>>>>>>> 941085f4402094d1d33828d5d9ff72f7319c9593
+>>>>>>> e57eae328b85d128cf4cd6618ea72ee9eb4d4633
+        
+    def __str__(self):
         result = [self.board, 
                   f"{self.selection1} and {self.selection2}, both chips have been removed from the board."]
         for name, score in self.score.items():
@@ -177,33 +219,61 @@ class Chips:
         return "\n".join(result)
     
     def match(self, s):
-        return bool(re.search(self.expr, s.strip()))
+        return bool(re.search(self.expr, s.strip()))   
         
-    print(self.state().board)
+        """print(self.state().board)
         outcome = self.outcome()
         if outcome == "win":
             print(f"Your score for the round was {self.score()}")
         else:
             print(fThe game is not over.)"""
             
-    def current_board(self, pause=PAUSE):
-        """Displays the board in the terminal and pauses momentarily.
+    """def current_board(self, pause=PAUSE):
+        Displays the board in the terminal and pauses momentarily.
          
-         """
+         
         template = (TEMPLATE
+<<<<<<< HEAD
                     .replace("<NAME>", self.names)
                     .replace("<SP>", " "*len(self.names[1])))
         print(template.format(*(self.board[0::-1]+self.board[1:])))
+=======
+<<<<<<< HEAD
+                    .replace("<NAME0>", self.names[0])
+                    .replace("<SP>", " "*len(self.names[1])))
+        print(template.format(*(self.board[6::-1]+self.board[7:])))
+        sleep(pause)"""
+def main(player, dice):
+    dice = Dice
+    game =Chips(player, dice)
+    game.play()
+=======
+                    .replace("<SP>", " "*len(self.names[0]))
+                    .replace("<NAME>", self.names[0]))
+        print(template.format((self.board[9:])))
+>>>>>>> e57eae328b85d128cf4cd6618ea72ee9eb4d4633
         sleep(pause)
+>>>>>>> 941085f4402094d1d33828d5d9ff72f7319c9593
     
 def parse_args(arg):
     parser = ArgumentParser()
     parser.add_argument("name", help="the first player's name")
+    parser.add_argument("dice", help = "stuff")
     return parser.parse_args(arg)
+
+
 
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
+<<<<<<< HEAD
+    main(args.name, args.dice)
+
+    
+    
+=======
     game = Chips(args.name)
     game.play()
-    
+
+
+>>>>>>> b9121b0c401060ef157897087004b428ddb424a8
