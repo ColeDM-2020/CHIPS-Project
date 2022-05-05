@@ -138,6 +138,8 @@ class Chips:
         
     def play(self):
         self.play_round()
+        print(self.current_board())
+        
         """if self.game_over is False:
             self.play_round()
             print(self.current_board())
