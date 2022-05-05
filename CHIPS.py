@@ -56,8 +56,8 @@ class Dice:
 
 class Get_Move:
     
-    def __init__(self, name):
-        self.names = name
+    def __init__(self, player):
+        self.name = player
         
     def turn(self, board):
         """Take a turn.
@@ -72,19 +72,17 @@ class Get_Move:
     
 class One(Get_Move):
     
-    def turn(self, c = Dice()):
-        print(c.rolldice())
-        selection1 = ((input(f"""{self.names}, please select your first chip. (or enter q to quit):""" ))
-                    .lower()
-                    .strip())
-        if selection1 == "q":
-            sys.exit(0)
+    def turn(self, c = Dice()):   
+            print(c.rolldice())
+            selection1 = ((input(f"""{self.name}, please select your first chip. (or enter q to quit):""" ))
+                        .strip())
+            if selection1 == "q":
+                sys.exit(0)
             
 class Two(Get_Move):
     
     def turn(self, c = Dice()):
-        selection2 = ((input(f"""{self.names}, select a second chip or enter 0. (or enter q to quit):""" ))
-                    .lower()
+        selection2 = ((input(f"""{self.name}, select a second chip or enter 0. (or enter q to quit):""" ))
                     .strip())
         if selection2 == "q":
             sys.exit(0)
@@ -156,7 +154,7 @@ def main(player):
     roll = Dice
     roll.rolldice
     roll.addroll
-    a = Get_Move(player)
+    a = Get_Move(str(player))
     b = One(Get_Move)
     b.turn()
     c = Two(Get_Move)
