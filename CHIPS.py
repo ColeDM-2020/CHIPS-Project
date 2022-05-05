@@ -24,9 +24,11 @@ NUM0 = "abcdefghij"
 NUM1 = [9]
 
 class Dice:
+    
     def __init__(self, dice1 = random.randint(1,6), dice2 = random.randint(1,6)):
         self.dice1 = dice1
         self.dice2 = dice2
+        
     def rolldice(self):
         """"rolls two dice
     
