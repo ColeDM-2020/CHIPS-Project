@@ -27,6 +27,13 @@ NUM1 = [9]
 
 class Dice:
     
+    def __init__ (self):
+        """
+        attributes
+        
+        """
+
+    
     def rolldice(self):
         """"rolls two dice
     
@@ -64,9 +71,18 @@ def get_move(game, player):
     Args:
         player (): The player. 
     
+<<<<<<< HEAD
+    
+ 
+    list_selections = list_selections
+=======
     """
     
+>>>>>>> e57eae328b85d128cf4cd6618ea72ee9eb4d4633
     
+    Dice.rolldice
+    Dice.addroll
+   
     while True:
         print()
         selection = (input(input((f"{game.names[player]}, select chips that you would" 
@@ -81,7 +97,7 @@ def get_move(game, player):
         """list_selections = list((int,selection().split())) 
         for x in list_selections:
             if type(x) == int:
-                return list_selections
+                return x
         
         list = [1,2,3,4,5,6,7,8,9,10]
         try:
@@ -92,47 +108,58 @@ def get_move(game, player):
                 if x != int:
                     raise ValueError("Please enter a number.")
         except ValueError as e:
+<<<<<<< HEAD
+                    print (e) """
+=======
                     print (e)"""
+>>>>>>> e57eae328b85d128cf4cd6618ea72ee9eb4d4633
         
 
-"""class GameState:
-    def __init__(self, selection1, selection2, score, num):
-        Set attributes.
-        def num_or_dot(num, mask):
-            if num in selection1 or selection2:
-                return mask
-            else:
-                return num             
-        self.board = " ".join(num_or_dot(c, "\u2022") for c in num)
-        self.expr = ("^"
-                     + "".join(num_or_dot(c, ".", re.escape) for c in num)
-                     + "$")
-        self.selection1 = selection1
-        self.selection2 = selection2
-        self.left = set("1,2,3,4,5,6,7,8,9,10") - (self.selection1 + self.selection2)
-            ##^^ does not workk, need to fix
-        self.score = score.copy()
-        
-    def __str__(self):
-        result = [self.board, 
-                  f"{self.selection1} and {self.selection2}, both chips have been removed from the board."]
-        for name, score in self.score.items():
-            msg = f"{name} has made {score} of {self.max_score} bad guesses"
-            result.append(msg)
-        #why did u add this, do they even have the option to make bad guessess???
-        return "\n".join(result)
-    
-    def match(self, s):
-        return bool(re.search(self.expr, s.strip()))"""
 
 class Chips:
     """check if the dice value matches the values of get_move"""
+<<<<<<< HEAD
+    def __init__(self, game, player, func = get_move):
+=======
     def __init__(self, player, dice, func = get_move):
+>>>>>>> e57eae328b85d128cf4cd6618ea72ee9eb4d4633
         self.names = player
         self.func = func
         self.board = []
         self.dice = dice
         
+    def get_move(self, player):
+        """Asks the player what chips they want to choose.
+    
+    Args:
+        player (): The player. 
+    
+    """
+        self.player = player
+    
+        Dice.rolldice
+        Dice.addroll
+   
+
+    
+        selection = (input(input((f"{[player]}, select chips that you would" 
+                                        "like to choose. Please seperate each chip by a space"
+                                        "(or enter q to quit):" )))
+                    .lower()
+                    .strip())
+        print(selection)
+        print("hi")
+        
+        self.list_selections = list((int,selection().split()))
+        
+        if selection == "q":
+            sys.exit(0)
+        for x in self.list_selections:
+            if type(x) == int:
+                return x
+        
+            
+                    
     def valid_move(self, value):
         """This method checks whether a player is allowed to play from a particular chip.
         
@@ -157,12 +184,17 @@ class Chips:
     def play(self):
         """Manage game play
         Ask if they want to play again and call play_again()"""
-        
+
+        get_move(self.game, self.names)
+       
         self.board = [1,2,3,4,5,6,7,8,9,10]
         self.current_board()
         
         while self.game_over() == True:
                  
+<<<<<<< HEAD
+            for x in self.list_selections:
+=======
 <<<<<<< HEAD
                 if self.func in self.board:
                     self.board[self.func] = 0
@@ -170,7 +202,14 @@ class Chips:
                         
 =======
             for x in list_selections:
+>>>>>>> e57eae328b85d128cf4cd6618ea72ee9eb4d4633
                 if x in self.board:
+<<<<<<< HEAD
+                    self.board[x] = 0
+                    
+            for x in self.board:       
+                print (x)
+=======
 <<<<<<< HEAD
                     self.board.remove(x)
                     
@@ -206,6 +245,9 @@ class Chips:
             return response == "y"
 >>>>>>> 941085f4402094d1d33828d5d9ff72f7319c9593
                           
+<<<<<<< HEAD
+>>>>>>> b9121b0c401060ef157897087004b428ddb424a8
+=======
 >>>>>>> 941085f4402094d1d33828d5d9ff72f7319c9593
 >>>>>>> e57eae328b85d128cf4cd6618ea72ee9eb4d4633
         
