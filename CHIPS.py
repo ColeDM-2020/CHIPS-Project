@@ -58,7 +58,16 @@ class Dice:
     
     
     
-    
+    def valid_move(self):
+        """This method checks whether a player is allowed to play from a particular chip.
+        
+        Args: value(int): the sum of the player's selection
+        """
+        roll = Dice()
+        value = selection1 + selection2
+        
+        if value != roll.addroll:
+            raise ValueError("Please pick chip(s) that add up to the sum of your roll")  
     
     
     
