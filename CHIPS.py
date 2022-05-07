@@ -116,6 +116,7 @@ class Chips:
         if self.chip0 in self.board:
             self.board[self.chip0] = 0
             print(self.board)
+            sleep(PAUSE*3)
         else:
             print("Your chip has already been chosen pick again")
             
@@ -146,7 +147,6 @@ class Chips:
     def play(self):
         self.play_round()
         print(self.current_board())
-
         """if self.game_over is False:
             self.play_round()
             print(self.current_board())
