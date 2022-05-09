@@ -119,11 +119,14 @@ class Chips:
 
     def game_over(self):
         """Determine whether a round is over"""
-        return sum(board[0:10]) == 0     
+        if sum(board[0:11]) > 10:
+            print(f"Your score is greater than 10, you lose.")
+        else:
+            print(f"Your score is less than 10, you win.")     
     
     def score(self):
         """Calculate player's score"""
-        return sum(board[0:10])    
+        print(f"Your final score is {sum(board[0:11])}")   
     
     def current_board(self, pause=PAUSE):
         """Displays the board in the terminal and pauses momentarily.
@@ -155,8 +158,10 @@ def main(player):
         c = Two(Get_Move)
         game = Chips(str(player), b.turn(), c.turn())
         game.play()
-        x += 1
-        """How do I save the current board output and make it keep the first results"""
+        x += 1  
+    print(game.score())
+    print(game.game_over())
+    """How do I save the current board output and make it keep the first results"""
  
         
      
