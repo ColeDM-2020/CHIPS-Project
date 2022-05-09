@@ -19,6 +19,8 @@ PAUSE = 0.2
 NUM0 = "abcdefghij"
 NUM1 = [10]
 
+board = [0,1,2,3,4,5,6,7,8,9,10]
+
 """class Dice:
     
     def __init__(self, dice1 = random.randint(1,6), dice2 = random.randint(1,6)):
@@ -63,14 +65,6 @@ class Get_Move:
         self.dice2 = random.randint(1,6)
             
     def turn(self, board):
-        """Take a turn.
-        
-        Args:
-            state (GameState): a snapshot of the current state of the game.
-        
-        Returns:
-            str: the player's guess (a letter or a word).
-        """
         raise NotImplementedError
     
 class One(Get_Move):
@@ -92,9 +86,9 @@ class Chips:
         self.names = player
         self.chip0 = chip0
         self.chip1 = chip1
-        self.board = []
         self.dice1 = random.randint(1,6)
         self.dice2 = random.randint(1,6)
+        
         
     def valid_move(self):
         """This method checks whether a player is allowed to play from a particular chip.
@@ -111,28 +105,26 @@ class Chips:
     
     
     def play_round(self):
-        self.board = [0,1,2,3,4,5,6,7,8,9,10]
         #self.current_board()
-        if self.chip0 in self.board:
-            self.board[self.chip0] = 0
-            print(self.board)
-            sleep(PAUSE*3)
+        if self.chip0 in board:
+            board[self.chip0] = 0
+            print(board)
         else:
             print("Your chip has already been chosen pick again")
             
-        if self.chip1 in self.board:
-            self.board[self.chip1] = 0
-            print(self.board)
+        if self.chip1 in board:
+            board[self.chip1] = 0
+            print(board)
         else:
             print("Your chip has already been chosen pick again")
 
     def game_over(self):
         """Determine whether a round is over"""
-        return sum(self.board[0:10]) == 0     
+        return sum(board[0:10]) == 0     
     
     def score(self):
         """Calculate player's score"""
-        return sum(self.board[0:10])    
+        return sum(board[0:10])    
     
     def current_board(self, pause=PAUSE):
         """Displays the board in the terminal and pauses momentarily.
@@ -141,12 +133,14 @@ class Chips:
         template = (TEMPLATE
                     .replace("<NAME>", self.names)
                     .replace("<SP>", " "*len(self.names[1])))
-        print(template.format(*(self.board[0::-1]+self.board[1:])))
+        print(template.format(*(board[0::-1]+board[1:])))
         sleep(pause)
         
     def play(self):
+        board
         self.play_round()
         print(self.current_board())
+        
         """if self.game_over is False:
             self.play_round()
             print(self.current_board())
@@ -155,15 +149,15 @@ class Chips:
                 
             
 def main(player):
-    t = 0
-    while t != 2:
+    x = 0
+    while x != 4:
         a = Get_Move(player)
         b = One(Get_Move)
         c = Two(Get_Move)
         game = Chips(str(player), b.turn(), c.turn())
         game.play()
-        t += 1  
-    """How do I save the current board output and make it keep the first results"""
+        x += 1
+        """How do I save the current board output and make it keep the first results"""
  
         
      
