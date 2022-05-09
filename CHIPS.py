@@ -63,14 +63,6 @@ class Get_Move:
         self.dice2 = random.randint(1,6)
             
     def turn(self, board):
-        """Take a turn.
-        
-        Args:
-            state (GameState): a snapshot of the current state of the game.
-        
-        Returns:
-            str: the player's guess (a letter or a word).
-        """
         raise NotImplementedError
     
 class One(Get_Move):
@@ -88,13 +80,14 @@ class Two(Get_Move):
         
 class Chips:
     
-    def __init__(self, player, chip0 = One(Get_Move), chip1 = Two(Get_Move)):
+    def __init__(self, player, board, chip0 = One(Get_Move), chip1 = Two(Get_Move)):
         self.names = player
         self.chip0 = chip0
         self.chip1 = chip1
         self.board = []
         self.dice1 = random.randint(1,6)
         self.dice2 = random.randint(1,6)
+        self.board = board
         
     def valid_move(self):
         """This method checks whether a player is allowed to play from a particular chip.
@@ -111,12 +104,10 @@ class Chips:
     
     
     def play_round(self):
-        self.board = [0,1,2,3,4,5,6,7,8,9,10]
         #self.current_board()
         if self.chip0 in self.board:
             self.board[self.chip0] = 0
             print(self.board)
-            sleep(PAUSE*3)
         else:
             print("Your chip has already been chosen pick again")
             
@@ -145,8 +136,10 @@ class Chips:
         sleep(pause)
         
     def play(self):
+        self.board
         self.play_round()
         print(self.current_board())
+        
         """if self.game_over is False:
             self.play_round()
             print(self.current_board())
@@ -155,15 +148,14 @@ class Chips:
                 
             
 def main(player):
-    t = 0
-    while t != 2:
+        board = [0,1,2,3,4,5,6,7,8,9,10]
         a = Get_Move(player)
         b = One(Get_Move)
         c = Two(Get_Move)
-        game = Chips(str(player), b.turn(), c.turn())
+        game = Chips(str(player), board, b.turn(), c.turn())
         game.play()
-        t += 1  
-    """How do I save the current board output and make it keep the first results"""
+          
+        """How do I save the current board output and make it keep the first results"""
  
         
      
