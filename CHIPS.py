@@ -103,7 +103,6 @@ class Chips:
             raise ValueError("Please pick chip(s) that add up to the sum of your roll")
     ##dont know if should be printed or returned####   
     
-    
     def play_round(self):
         #self.current_board()
         if self.chip0 in board:
