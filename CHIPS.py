@@ -103,6 +103,10 @@ class Chips:
             raise ValueError("Please pick chip(s) that add up to the sum of your roll")
     ##dont know if should be printed or returned####   
     
+    def check_chips(self):
+        
+        if self.chip0 or self.chip1 not in board:
+            raise ValueError("The chip you chose has already been taken out of your board")
     
     def play_round(self):
         #self.current_board()
@@ -162,11 +166,8 @@ def main(player):
         x += 1  
     print(game.score())
     print(game.game_over())
-    """How do I save the current board output and make it keep the first results"""
  
-        
-     
- 
+
 def parse_args(arglist):
     parser = ArgumentParser()   
     parser.add_argument("player", nargs="*", help="player names")
