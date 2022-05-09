@@ -17,7 +17,7 @@ TEMPLATE = f"""{TERM.home+TERM.clear}
 PAUSE = 0.2
 
 NUM0 = "012345678910"
-NUM1 = [10]
+#NUM1 = [10]
 
 """class Dice:
     
@@ -57,53 +57,29 @@ NUM1 = [10]
 
 class Get_Move:
     
-<<<<<<< HEAD
-    def __init__(self, player):
-        self.name = player
-        
-=======
     def __init__(self, name):
         self.name = name
         self.dice1 = random.randint(1,6)
         self.dice2 = random.randint(1,6)
             
->>>>>>> b77ee57c44fb447cb34659f7afe14204d422159b
     def turn(self, board):
-        """Take a turn.
-        
-        Args:
-            state (GameState): a snapshot of the current state of the game.
-        
-        Returns:
-            str: the player's guess (a letter or a word).
-        """
+        self.board = []
         raise NotImplementedError
     
 class One(Get_Move):
     
-<<<<<<< HEAD
-    def turn(self, c = Dice()):
-            print(c.rolldice())
-            selection1 = int(input(f"""{self.name}, please select your first chip. (or enter q to quit):""" ))
-            return selection1
-            
-class Two(Get_Move):
-    
-    def turn(self, c = Dice()):
-            selection2 = int(input(f"""{self.name}, select a second chip or enter 0. (or enter q to quit):""" ))
-            return selection2
-=======
     def turn(self):
         print(f"Dice 1 rolled a: {self.dice1} \nDice 2 rolled a: {self.dice2}")
         selection1 = int(input(f"""{self.name}, please select your first chip. (or enter q to quit):""" ))
-        return selection1
+        num0 = NUM0.find(str(selection1))
+        return num0
             
 class Two(Get_Move):
     
     def turn(self):
         selection2 = int(input(f"""{self.name}, select a second chip or enter 0. (or enter q to quit):""" ))
-        return selection2
->>>>>>> b77ee57c44fb447cb34659f7afe14204d422159b
+        num0 = NUM0.find(str(selection2))
+        return num0
         
 class Chips:
     
@@ -121,33 +97,30 @@ class Chips:
         Args: value(int): the sum of the player's selection
         """
         
-<<<<<<< HEAD
-        if value != roll.addroll:
-            raise ValueError("Please pick chip(s) that add up to the sum of your roll")   
-=======
         value = self.chip0 + self.chip1
         dices = self.dice1 + self.dice2
         
         if value != dices:
             raise ValueError("Please pick chip(s) that add up to the sum of your roll")
     ##dont know if should be printed or returned####   
->>>>>>> b77ee57c44fb447cb34659f7afe14204d422159b
     
     
     def play_round(self):
-        self.board = [0,1,2,3,4,5,6,7,8,9,10]
-        self.current_board()
-        if self.chip0 in self.board:
-            self.board[self.chip0] = 0
-            print(self.board)
-        else:
-            print("Your chip has already been chosen pick again")
+        
+            self.current_board()
             
-        if self.chip1 in self.board:
-            self.board[self.chip1] = 0
-            print(self.board)
-        else:
-            print("Your chip has already been chosen pick again")
+            while self.game_over() == False:
+                if self.chip0 in self.board:
+                    self.board[self.chip0] = 0
+                    print(self.board)
+                else:
+                    print("Your chip has already been chosen pick again")
+            
+                if self.chip1 in self.board:
+                    self.board[self.chip1] = 0
+                    print(self.board)
+                else:
+                    print("Your chip has already been chosen pick again")
 
     def game_over(self):
         """Determine whether a round is over"""
@@ -169,15 +142,9 @@ class Chips:
         sleep(pause)
         
     def play(self):
+        self.board = [0,1,2,3,4,5,6,7,8,9,10]
         self.play_round()
-<<<<<<< HEAD
-        while self.game_over is False:
-            self.play_round()
-            print(self.current_board())
-        if self.game_over is True:
-            print(f"{self.names}, you win! Your final score is 0.")
-=======
-        print(self.current_board())
+
 
         """if self.game_over is False:
             self.play_round()
@@ -185,20 +152,9 @@ class Chips:
         if self.game_over is True:
             print(f"{self.player}, you win! Your final score is 0.")"""
                 
->>>>>>> b77ee57c44fb447cb34659f7afe14204d422159b
             
                  
 def main(player):
-<<<<<<< HEAD
-    roll = Dice
-    roll.rolldice
-    roll.addroll
-    #a = Get_Move(player)
-    b = One(Get_Move)
-    c = Two(Get_Move)
-    game = Chips(str(player), b.turn(), c.turn())
-    game.play()
-=======
     t = 0
     while t != 2:
         a = Get_Move(player)
@@ -209,7 +165,6 @@ def main(player):
         t += 1  
     """How do I save the current board output and make it keep the first results"""
  
->>>>>>> b77ee57c44fb447cb34659f7afe14204d422159b
         
       
 def parse_args(arglist):
