@@ -106,8 +106,19 @@ class Chips:
     
     
     def play_round(self):
+<<<<<<< HEAD
         
             self.current_board()
+=======
+        self.board = [0,1,2,3,4,5,6,7,8,9,10]
+        #self.current_board()
+        if self.chip0 in self.board:
+            self.board[self.chip0] = 0
+            print(self.board)
+            sleep(PAUSE*3)
+        else:
+            print("Your chip has already been chosen pick again")
+>>>>>>> 8dc739f1f2ca94f014c2eab31968bdc00c782f9b
             
             while self.game_over() == False:
                 if self.chip0 in self.board:
@@ -144,8 +155,12 @@ class Chips:
     def play(self):
         self.board = [0,1,2,3,4,5,6,7,8,9,10]
         self.play_round()
+<<<<<<< HEAD
 
 
+=======
+        print(self.current_board())
+>>>>>>> 8dc739f1f2ca94f014c2eab31968bdc00c782f9b
         """if self.game_over is False:
             self.play_round()
             print(self.current_board())
