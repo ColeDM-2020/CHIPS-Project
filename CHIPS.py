@@ -146,7 +146,7 @@ class Chips:
     def play(self):
         board
         self.play_round()
-        print(self.current_board())
+        self.current_board()
         
         """if self.game_over is False:
             self.play_round()
@@ -164,8 +164,8 @@ def main(player):
         game = Chips(str(player), b.turn(), c.turn())
         game.play()
         x += 1  
-    print(game.score())
-    print(game.game_over())
+    game.score()
+    game.game_over()
  
 
 def parse_args(arglist):
