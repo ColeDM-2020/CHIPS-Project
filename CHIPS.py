@@ -97,23 +97,18 @@ class Chips:
                 particular chip.
         """
         
-        value = self.chip0 + self.chip1
-        dices = self.dice1 + self.dice2
-        
-        if value != dices:
+        value = [self.chip0, self.chip1]
+        dice = [self.dice1, self.dice2]
+        if sum(value) != sum(dice):
             raise ValueError("Please pick chip(s) that add up to the sum of your roll")
     ##dont know if should be printed or returned####   
     
     def check_chips(self):
-        """Checks to see if a chip selection is not in the board and raises a 
-                value error.
-
-        Raises:
-            ValueError: Will prompt the user that they chip they selected has 
-                    already been taken out of the board and end the game.
-        """
-        if self.chip0 or self.chip1 not in board:
+        
+        if self.chip0 not in board:
             raise ValueError("The chip you chose has already been taken out of your board")
+        elif self.chip1 not in board:
+            raise ValueError("The chip you chose has already been taken out of your board") 
     
     def play_round(self):
         """Regulates checking if a chip selected is in the board. 
@@ -156,6 +151,8 @@ class Chips:
         """ Calls the board, play round and the current board function. 
         """
         board
+        self.check_chips()
+        self.valid_move()
         self.play_round()
         self.current_board()
         
