@@ -22,19 +22,21 @@ NUM1 = [10]
 board = [0,1,2,3,4,5,6,7,8,9,10]
 
 
+
 class Get_Move:
     
     def __init__(self, name):
         self.name = name
         self.dice1 = random.randint(1,6)
         self.dice2 = random.randint(1,6)
+
             
     def turn(self, board):
         raise NotImplementedError
     
     
 class One(Get_Move):
-    
+
     def turn(self):
         print(f"Dice 1 rolled a: {self.dice1} \nDice 2 rolled a: {self.dice2}")
         selection1 = int(input(f"""Please select your first chip. (or enter q to quit):""" ))
@@ -46,14 +48,16 @@ class Two(Get_Move):
         selection2 = int(input(f"""Please select a second chip or enter 0. (or enter q to quit):""" ))
         return selection2
         
+        
 class Chips:
     
     def __init__(self, player, chip0 = One(Get_Move), chip1 = Two(Get_Move)):
         self.names = player
         self.chip0 = chip0
         self.chip1 = chip1
-        self.dice1 = random.randint(1,6)
-        self.dice2 = random.randint(1,6)
+        a = Get_Move(player)
+        self.dice1 = a.dice1
+        self.dice2 = a.dice2
         
         
     def valid_move(self):
@@ -66,7 +70,7 @@ class Chips:
         dice = [self.dice1, self.dice2]
         if sum(value) != sum(dice):
             raise ValueError("Please pick chip(s) that add up to the sum of your roll")
-    ##dont know if should be printed or returned####   
+       
     
     def check_chips(self):
         
@@ -113,15 +117,10 @@ class Chips:
     def play(self):
         board
         self.check_chips()
-        self.valid_move()
+        #self.valid_move()
         self.play_round()
         self.current_board()
         
-        """if self.game_over is False:
-            self.play_round()
-            print(self.current_board())
-        if self.game_over is True:
-            print(f"{self.player}, you win! Your final score is 0.")"""
     
                
             
