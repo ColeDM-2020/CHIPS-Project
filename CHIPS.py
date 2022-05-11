@@ -24,10 +24,14 @@ board = [0,1,2,3,4,5,6,7,8,9,10]
 
 class Get_Move:
     
+    dice1 = random.randint(1,6)
+    dice2 = random.randint(1,6)
+    
     def __init__(self, name):
         self.name = name
-        self.dice1 = random.randint(1,6)
-        self.dice2 = random.randint(1,6)
+       #self.dice1 = random.randint(1,6)
+       #self.dice2 = random.randint(1,6)
+       
             
     def turn(self, board):
         raise NotImplementedError
@@ -47,13 +51,13 @@ class Two(Get_Move):
         return selection2
         
 class Chips:
-    
+        
     def __init__(self, player, chip0 = One(Get_Move), chip1 = Two(Get_Move)):
         self.names = player
         self.chip0 = chip0
         self.chip1 = chip1
-        self.dice1 = random.randint(1,6)
-        self.dice2 = random.randint(1,6)
+        #self.dice1 = random.randint(1,6)
+        #self.dice2 = random.randint(1,6)
         
         
     def valid_move(self):
@@ -64,6 +68,10 @@ class Chips:
         
         value = [self.chip0, self.chip1]
         dice = [self.dice1, self.dice2]
+        
+        print(value)
+        print(dice)
+  
         if sum(value) != sum(dice):
             raise ValueError("Please pick chip(s) that add up to the sum of your roll")
         
