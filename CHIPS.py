@@ -67,6 +67,7 @@ class Chips:
         
         if value != dices:
             raise ValueError("Please pick chip(s) that add up to the sum of your roll")
+        
     ##dont know if should be printed or returned####   
     
     def check_chips(self):
@@ -75,18 +76,10 @@ class Chips:
             raise ValueError("The chip you chose has already been taken out of your board")
     
     def play_round(self):
-<<<<<<< HEAD
-        self.board = [0,1,2,3,4,5,6,7,8,9,10]
-        if self.chip0 in self.board:
-            self.board[self.chip0] = 0
-            print(self.board)
-            sleep(PAUSE*3)
-=======
         #self.current_board()
         if self.chip0 in board:
             board[self.chip0] = 0
             print(board)
->>>>>>> 2a5e78d98e84523a2fdc748a4314c793117351dd
         else:
             print("Your chip has already been chosen pick again")
             
