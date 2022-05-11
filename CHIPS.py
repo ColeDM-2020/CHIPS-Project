@@ -21,12 +21,19 @@ NUM0 = "012345678910"
 board = [0,1,2,3,4,5,6,7,8,9,10]
 
 
+dice1 = random.randint(1,6)
+d1 =dice1
+    
+dice2 = random.randint(1,6)
+d2 = dice2
+    
+
 class Get_Move:
     
     def __init__(self, name):
         self.name = name
-        self.dice1 = random.randint(1,6)
-        self.dice2 = random.randint(1,6)
+        self.dice1 = dice1
+        self.dice2 = dice2
             
     def turn(self, board):
         raise NotImplementedError
@@ -51,8 +58,8 @@ class Chips:
         self.names = player
         self.chip0 = chip0
         self.chip1 = chip1
-        self.dice1 = random.randint(1,6)
-        self.dice2 = random.randint(1,6)
+        self.dice1 = d1
+        self.dice2 = d2
         
         
     def valid_move(self):
