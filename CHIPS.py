@@ -36,26 +36,14 @@ class One(Get_Move):
     
     def turn(self):
         print(f"Dice 1 rolled a: {self.dice1} \nDice 2 rolled a: {self.dice2}")
-<<<<<<< HEAD
-        selection1 = int(input(f"""{self.name}, please select your first chip. (or enter q to quit):""" ))
-        num0 = NUM0.find(str(selection1))
-        return num0
-=======
         selection1 = int(input(f"""Please select your first chip. (or enter q to quit):""" ))
         return selection1
->>>>>>> cd06f7bdb725613596857347154cdfc1f329fd57
             
 class Two(Get_Move):
     
     def turn(self):
-<<<<<<< HEAD
-        selection2 = int(input(f"""{self.name}, select a second chip or enter 0. (or enter q to quit):""" ))
-        num0 = NUM0.find(str(selection2))
-        return num0
-=======
         selection2 = int(input(f"""Please select a second chip or enter 0. (or enter q to quit):""" ))
         return selection2
->>>>>>> cd06f7bdb725613596857347154cdfc1f329fd57
         
 class Chips:
     
@@ -93,30 +81,6 @@ class Chips:
         else:
             print("Your chip has already been chosen pick again")
             
-<<<<<<< HEAD
-            while self.game_over() == False:
-                if self.chip0 in self.board:
-                    self.board[self.chip0] = 0
-                    print(self.board)
-                else:
-                    print("Your chip has already been chosen pick again")
-            
-                if self.chip1 in self.board:
-                    self.board[self.chip1] = 0
-                    print(self.board)
-                else:
-                    print("Your chip has already been chosen pick again")
-
-    def game_over(self):
-        """Determine whether a round is over"""
-        
-        return sum(self.board[0:10]) == 0     
-    
-    def score(self):
-        """Calculate player's score"""
-        
-        return sum(self.board[0:10])    
-=======
         if self.chip1 in board:
             board[self.chip1] = 0
             print(board)
@@ -133,7 +97,6 @@ class Chips:
     def score(self):
         """Calculate player's score"""
         print(f"Your final score is {sum(board[0:11])}")   
->>>>>>> cd06f7bdb725613596857347154cdfc1f329fd57
     
     def current_board(self, pause=PAUSE):
         """Displays the board in the terminal and pauses momentarily."""
@@ -160,24 +123,16 @@ class Chips:
                  
 def main(player):
     x = 0
-    while x != 5:
+    while x != 8:
         b = One(Get_Move)
         c = Two(Get_Move)
         game = Chips(str(player), b.turn(), c.turn())
         game.play()
-<<<<<<< HEAD
-          
-        """How do I save the current board output and make it keep the first results"""
- 
-        
-      
-=======
         x += 1  
     game.score()
     game.game_over()
  
 
->>>>>>> cd06f7bdb725613596857347154cdfc1f329fd57
 def parse_args(arglist):
     parser = ArgumentParser()   
     parser.add_argument("player", nargs="*", help="player names")
