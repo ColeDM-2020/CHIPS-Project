@@ -104,7 +104,14 @@ class Chips:
     ##dont know if should be printed or returned####   
     
     def check_chips(self):
-        
+        """Checks to see if a chip selection is not in the board. 
+
+        Raises:
+            ValueError: Prompts the user that they chip they have selected is 
+                already taken out of their board.
+            ValueError: Prompts the user that they chip they have selected is 
+                already taken out of their boar
+        """
         if self.chip0 not in board:
             raise ValueError("The chip you chose has already been taken out of your board")
         elif self.chip1 not in board:
