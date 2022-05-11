@@ -67,17 +67,18 @@ class Get_Move:
     def turn(self, board):
         raise NotImplementedError
     
+    
 class One(Get_Move):
     
     def turn(self):
         print(f"Dice 1 rolled a: {self.dice1} \nDice 2 rolled a: {self.dice2}")
-        selection1 = int(input(f"""{self.name}, please select your first chip. (or enter q to quit):""" ))
+        selection1 = int(input(f"""Please select your first chip. (or enter q to quit):""" ))
         return selection1
             
 class Two(Get_Move):
     
     def turn(self):
-        selection2 = int(input(f"""{self.name}, select a second chip or enter 0. (or enter q to quit):""" ))
+        selection2 = int(input(f"""Please select a second chip or enter 0. (or enter q to quit):""" ))
         return selection2
         
 class Chips:
@@ -153,12 +154,12 @@ class Chips:
             print(self.current_board())
         if self.game_over is True:
             print(f"{self.player}, you win! Your final score is 0.")"""
-                
+    
+               
             
 def main(player):
     x = 0
-    while x != 4:
-        a = Get_Move(player)
+    while x != 5:
         b = One(Get_Move)
         c = Two(Get_Move)
         game = Chips(str(player), b.turn(), c.turn())
