@@ -9,7 +9,7 @@ TERM = Terminal()
 PCOLOR = TERM.red1       
 NCOLOR = TERM.cyan1
 
-SLOT = "{:>0}"
+SLOT = "{:>=0}"
 TEMPLATE = f"""{TERM.home+TERM.clear}
 <SP>{NCOLOR}<NAME>:{PCOLOR}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}  {SLOT}
 {TERM.normal}"""
@@ -17,7 +17,6 @@ TEMPLATE = f"""{TERM.home+TERM.clear}
 PAUSE = 0.2
 
 NUM0 = "012345678910"
-#NUM1 = [10]
 
 """class Dice:
     
@@ -63,10 +62,6 @@ class Get_Move:
         self.dice2 = random.randint(1,6)
             
     def turn(self, board):
-<<<<<<< HEAD
-        self.board = []
-=======
->>>>>>> a583659c3672139033a47aa37841f57495679d9e
         raise NotImplementedError
     
 class One(Get_Move):
@@ -150,11 +145,7 @@ class Chips:
         sleep(pause)
         
     def play(self):
-<<<<<<< HEAD
-        self.board = [0,1,2,3,4,5,6,7,8,9,10]
-=======
         self.board
->>>>>>> a583659c3672139033a47aa37841f57495679d9e
         self.play_round()
         print(self.current_board())
         
