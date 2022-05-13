@@ -31,7 +31,7 @@ class Get_Move:
         self.dice2 (int): Random value assigned to Dice 2. 
     """
     
-    def __init__(self, name):
+    def __init__(self, name, dice1, dice2):
         """Initializes the name of the player, and the values of dice 1 and
                 and dice 2 roll. 
 
@@ -39,37 +39,20 @@ class Get_Move:
             name (str): The name of the player. 
         """
         self.name = name
-        self.dice1 = random.randint(1,6)
-        self.dice2 = random.randint(1,6)
-
+        self.dice1 = dice1
+        self.dice2 = dice2
             
-    def turn(self, board):
-        raise NotImplementedError
-    
-    
-class One(Get_Move):
-    """First sub class of Get_move to manage one chip selection. 
-
-    """
-    
     def turn(self):
-        """ Organizes how a chip selection will work for the player.  
+        """Asks the player to choose two chips from the board
         """
-        print(f"Dice 1 rolled a: {self.dice1} \nDice 2 rolled a: {self.dice2}")
-        selection1 = int(input(f"""Please select your first chip. (or enter q to quit):""" ))
-        return selection1
-            
-class Two(Get_Move):
-    """Second child class of Get_Move to manage second chip selection. 
-
-    """
-    
-    def turn(self):
-        """Organizes how a chip selection will work for the player.
-        """
-        selection2 = int(input(f"""Please select a second chip or enter 0. (or enter q to quit):""" ))
-        return selection2
         
+        print(f"Dice 1 rolled a: {self.dice1} \nDice 2 rolled a: {self.dice2}")
+        selection1 = int(input(f"""Please select your first and second chip. (or enter q to quit):""" ))
+        selection2 = int(input(f"""Please select a second chip or enter 0. (or enter q to quit):""" ))
+        boo = [selection1, selection2]
+        return boo
+    
+            
         
 class Chips:
     """Runs the Chips game. 
@@ -78,7 +61,7 @@ class Chips:
         self.dice1 = Randomized roll for dice1.
         self.dice2 = Randomized roll for dice2.
     """
-    def __init__(self, player, chip0 = One(Get_Move), chip1 = Two(Get_Move)):
+    def __init__(self, player, chips, dice1, dice2):
         """Initialized the player, chip0 and chip1. 
 
         Args:
@@ -89,21 +72,20 @@ class Chips:
                     Defaults to Two(Get_Move).
         """
         self.names = player
-        self.chip0 = chip0
-        self.chip1 = chip1
-        a = Get_Move(player)
-        self.dice1 = a.dice1
-        self.dice2 = a.dice2
+        self.chips = chips
+        self.dice1 = dice1
+        self.dice2 = dice2
+        
+        
         
         
     def valid_move(self):
-        """This method checks whether a player is allowed to play from a 
+        """This method checks whether a player is allowed to play a 
                 particular chip.
         """
         
-        value = [self.chip0, self.chip1]
         dice = [self.dice1, self.dice2]
-        if sum(value) != sum(dice):
+        if sum(self.chips) != sum(dice):
             raise ValueError("Please pick chip(s) that add up to the sum of your roll")
        
     
@@ -116,23 +98,22 @@ class Chips:
             ValueError: Prompts the user that they chip they have selected is 
                 already taken out of their boar
         """
-        if self.chip0 not in board:
+        if self.chips[0] not in board:
             raise ValueError("The chip you chose has already been taken out of your board")
-        elif self.chip1 not in board:
+        elif self.chips[1] not in board:
             raise ValueError("The chip you chose has already been taken out of your board") 
     
     def play_round(self):
         """Regulates checking if a chip selected is in the board. 
         """
-        #self.current_board()
-        if self.chip0 in board:
-            board[self.chip0] = 0
+        if self.chips[0] in board:
+            board[self.chips[0]] = 0
             print(board)
         else:
             print("Your chip has already been chosen pick again")
             
-        if self.chip1 in board:
-            board[self.chip1] = 0
+        if self.chips[1] in board:
+            board[self.chips[1]] = 0
             print(board)
         else:
             print("Your chip has already been chosen pick again")
@@ -163,7 +144,7 @@ class Chips:
         """
         board
         self.check_chips()
-        #self.valid_move()
+        self.valid_move()
         self.play_round()
         self.current_board()
         
@@ -178,9 +159,10 @@ def main(player):
     """
     x = 0
     while x != 5:
-        b = One(Get_Move)
-        c = Two(Get_Move)
-        game = Chips(str(player), b.turn(), c.turn())
+        dice1 = random.randint(1,6)
+        dice2 = random.randint(1,6)
+        b = Get_Move(player, dice1, dice2)
+        game = Chips(str(player), b.turn(), dice1, dice2)
         game.play()
         x += 1  
     game.score()
