@@ -1,4 +1,5 @@
 from argparse import ArgumentParser
+from re import S
 from blessed import Terminal
 import sys
 import random
@@ -158,6 +159,8 @@ def main(player):
         player (str): The players name.
     """
     x = 0
+    print(f"""Game Instructions: \nThe computer will roll two dice for you, then you will choose two chips from the board. \nThe chips on the board range from 1-10.
+The chips you choose must add up to the value of the dice. \nYou cannot choose the same chip multiple times""")
     while x != 5:
         dice1 = random.randint(1,6)
         dice2 = random.randint(1,6)
