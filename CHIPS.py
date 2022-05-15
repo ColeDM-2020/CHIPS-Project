@@ -99,22 +99,24 @@ class Chips:
             ValueError: Prompts the user that they chip they have selected is 
                 already taken out of their boar
         """
-        if self.chips[0] not in board:
+        one, two = self.chips
+        if one not in board:
             raise ValueError("The chip you chose has already been taken out of your board")
-        elif self.chips[1] not in board:
+        elif two not in board:
             raise ValueError("The chip you chose has already been taken out of your board") 
     
     def play_round(self):
         """Regulates checking if a chip selected is in the board. 
         """
-        if self.chips[0] in board:
-            board[self.chips[0]] = 0
+        one, two = self.chips
+        if one in board:
+            board[one] = 0
             print(board)
         else:
             print("Your chip has already been chosen pick again")
             
-        if self.chips[1] in board:
-            board[self.chips[1]] = 0
+        if two in board:
+            board[two] = 0
             print(board)
         else:
             print("Your chip has already been chosen pick again")
@@ -159,8 +161,6 @@ def main(player):
         player (str): The players name.
     """
     x = 0
-    print(f"""Game Instructions: \nThe computer will roll two dice for you, then you will choose two chips from the board. \nThe chips on the board range from 1-10.
-The chips you choose must add up to the value of the dice. \nYou cannot choose the same chip multiple times""")
     while x != 5:
         dice1 = random.randint(1,6)
         dice2 = random.randint(1,6)
