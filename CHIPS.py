@@ -120,11 +120,14 @@ class Chips:
             print("Your chip has already been chosen pick again")
 
     def game_over(self):
-        """Determine whether a round is over"""
-        if sum(board[0:11]) > 15:
-            print(f"Your score is greater than 15, you lose.")
-        else:
-            print(f"Your score is less than or equal to 15, you win.")     
+        print (f"Your score is greater than 15, you lose") if sum(board[0:11]) > 15 else print("Your score is less than or equal to 15, you win")
+    
+    ##def game_over(self):
+        #"""Determine whether a round is over"""
+        #if sum(board[0:11]) > 15:
+            #print(f"Your score is greater than 15, you lose.")
+        #else:
+            #print(f"Your score is less than or equal to 15, you win.")     
     
     def score(self):
         """Calculate player's score"""
