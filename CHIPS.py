@@ -38,6 +38,11 @@ class Get_Move:
 
         Args:
             name (str): The name of the player. 
+            dice1 (int): The result of the first dice 
+            dice2 (int): The result of the second dice 
+        
+        Returns: 
+           list of ints: contains the two chips the player has selected to move
         """
         self.name = name
         self.dice1 = dice1
@@ -48,8 +53,8 @@ class Get_Move:
         """
         
         print(f"Dice 1 rolled a: {self.dice1} \nDice 2 rolled a: {self.dice2}")
-        selection1 = int(input(f"""Please select your first and second chip. (or enter q to quit):""" ))
-        selection2 = int(input(f"""Please select a second chip or enter 0. (or enter q to quit):""" ))
+        selection1 = int(input(f"""Please select your first chip. (or enter q to quit):""" ))
+        selection2 = int(input(f"""Please select your second chip or enter 0. (or enter q to quit):""" ))
         boo = [selection1, selection2]
         return boo
     
@@ -63,14 +68,20 @@ class Chips:
         self.dice2 = Randomized roll for dice2.
     """
     def __init__(self, player, chips, dice1, dice2):
-        """Initialized the player, chip0 and chip1. 
+        """Initialized the player, chips, dice1 and dice2. 
 
         Args:
             player (str): The players name.
+<<<<<<< HEAD
+            chips (list): Contains the two chips the player wants to removes 
+            dice1 (int): The result of the first dice 
+            dice2 (int): The result of the second dice 
+=======
             chip0 (int, optional): The first chip selection a player makes. 
                     Defaults to One(Get_Move).
             chip1 (int, optional): The second chip selection a plauer makes. 
                     Defaults to Two(Get_Move).
+>>>>>>> 5536550927b1dac177fb50266990ad5cb8d49cae
         """
         self.names = player
         self.chips = chips
@@ -78,16 +89,17 @@ class Chips:
         self.dice2 = dice2
         
         
-        
-        
     def valid_move(self):
         """This method checks whether a player is allowed to play a 
                 particular chip.
+                
+        Raises:
+            ValueError: The chips the user selected do not add up to the sum of their roll
         """
         
         dice = [self.dice1, self.dice2]
         if sum(self.chips) != sum(dice):
-            raise ValueError("Please pick chip(s) that add up to the sum of your roll")
+            raise ValueError("Please pick chips that add up to the sum of your roll")
        
     
     def check_chips(self):
@@ -107,6 +119,9 @@ class Chips:
     
     def play_round(self):
         """Regulates checking if a chip selected is in the board. 
+        
+        Side effects:
+            Prints the board or prints a message to pick again
         """
         one, two = self.chips
         if one in board:
@@ -122,19 +137,30 @@ class Chips:
             print("Your chip has already been chosen pick again")
 
     def game_over(self):
-        """Determine whether a round is over"""
+        """Determine whether a round is over
+        
+        Side effects: 
+            Prints is the user won or lose
+        """
         if sum(board[0:11]) > 15:
             print(f"Your score is greater than 15, you lose.")
         else:
             print(f"Your score is less than or equal to 15, you win.")     
     
     def score(self):
-        """Calculate player's score"""
+        """Calculate player's score
+        
+        Side effects:
+            Prints the users total score
+        """
+    
         print(f"Your final score is {sum(board[0:11])}")   
     
     def current_board(self, pause=PAUSE):
         """Displays the board in the terminal and pauses momentarily.
          
+        Side effects:
+            Prints the current state of the board
          """
         template = (TEMPLATE
                     .replace("<NAME>", self.names)
@@ -145,6 +171,7 @@ class Chips:
     def play(self):
         """ Calls the board, play round and the current board function. 
         """
+    
         board
         self.check_chips()
         self.valid_move()
@@ -159,13 +186,22 @@ def main(player):
 
     Args:
         player (str): The players name.
+        
+    Side effect:
+        prints the Chip games instructions
     """
     x = 0
+<<<<<<< HEAD
+    print(f"""Game Instructions:\n \nThe board contains chips ranging from 1-10. \nThe goal of the game is to remove as many chips from the board as possible.
+        \nThe computer will roll two dice for you. \nYou then strategically choose two chips from the board that you would like to remove. 
+        \nThe two chips you pick to remove MUST add up to the sum of the dice roll." \nYou cannot choose the same chip multiple times.\n """)
+=======
     with open ("instructions.txt", "r", encoding = "utf-8") as f:
         for line in f:
             print(line)
     #print(f"""Game Instructions: \nThe computer will roll two dice for you, then you will choose two chips from the board. \nThe chips on the board range from 1-10.
 #The chips you choose must add up to the value of the dice. \nYou cannot choose the same chip multiple times""")
+>>>>>>> 5536550927b1dac177fb50266990ad5cb8d49cae
     while x != 5:
         dice1 = random.randint(1,6)
         dice2 = random.randint(1,6)
