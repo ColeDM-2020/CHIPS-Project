@@ -67,7 +67,7 @@ class Chips:
         self.dice1 = Randomized roll for dice1.
         self.dice2 = Randomized roll for dice2.
     """
-    def __init__(self, player, chips, dice1, dice2):
+    def __init__(self, player, chips, dice1 = 0, dice2 = 0):
         """Initialized the player, chips, dice1 and dice2. 
 
         Args:
