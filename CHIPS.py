@@ -67,9 +67,9 @@ class Chips:
 
         Args:
             player (str): The players name.
-            chip0 (_type_, optional): The first chip selection a player makes. 
+            chip0 (int, optional): The first chip selection a player makes. 
                     Defaults to One(Get_Move).
-            chip1 (_type_, optional): The second chip selection a plauer makes. 
+            chip1 (int, optional): The second chip selection a plauer makes. 
                     Defaults to Two(Get_Move).
         """
         self.names = player
