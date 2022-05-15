@@ -32,7 +32,7 @@ class Get_Move:
         self.dice2 (int): Random value assigned to Dice 2. 
     """
     
-    def __init__(self, name, dice1, dice2):
+    def __init__(self, name, dice1 = 0, dice2 = 0):
         """Initializes the name of the player, and the values of dice 1 and
                 and dice 2 roll. 
 
@@ -67,7 +67,7 @@ class Chips:
         self.dice1 = Randomized roll for dice1.
         self.dice2 = Randomized roll for dice2.
     """
-    def __init__(self, player, chips, dice1 = 0, dice2 = 0):
+    def __init__(self, player, chips, dice1, dice2 ):
         """Initialized the player, chips, dice1 and dice2. 
 
         Args:
@@ -118,24 +118,18 @@ class Chips:
             Prints the board or prints a message to pick again
         """
         one, two = self.chips
-        if one in board:
-            board[one] = 0
-            print(board)
-        else:
-            print("Your chip has already been chosen pick again")
-            
-        if two in board:
-            board[two] = 0
-            print(board)
-        else:
-            print("Your chip has already been chosen pick again")
+        
+        board[one] = 0 if one in board else print("Your chip has already been chosen pick again")
+        
+        board[two] = 0 if two in board else print("Your chip has already been chosen pick again")
+    
 
     def game_over(self):
         """Determine whether a round is over
         
         Side effects: 
-            Prints is the user won or lose
-        """  
+            Prints if the user won or lose
+        """
         if sum(board[0:11]) > 15:
             print(f"Your score is greater than 15, you lose.")
         else:
