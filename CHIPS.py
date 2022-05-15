@@ -135,7 +135,7 @@ class Chips:
         
         Side effects: 
             Prints is the user won or lose
-        """
+        """  
         if sum(board[0:11]) > 15:
             print(f"Your score is greater than 15, you lose.")
         else:
