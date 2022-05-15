@@ -1,0 +1,5 @@
+Game Instructions:
+The computer will roll two dice for you, then you will choose two chips from the board. 
+The chips on the board range from 1-10.
+The chips you choose must add up to the value of the dice. 
+You cannot choose the same chip multiple times
