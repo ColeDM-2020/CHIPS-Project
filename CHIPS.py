@@ -72,16 +72,10 @@ class Chips:
 
         Args:
             player (str): The players name.
-<<<<<<< HEAD
-            chips (list): Contains the two chips the player wants to removes 
-            dice1 (int): The result of the first dice 
-            dice2 (int): The result of the second dice 
-=======
             chip0 (int, optional): The first chip selection a player makes. 
                     Defaults to One(Get_Move).
             chip1 (int, optional): The second chip selection a plauer makes. 
                     Defaults to Two(Get_Move).
->>>>>>> 5536550927b1dac177fb50266990ad5cb8d49cae
         """
         self.names = player
         self.chips = chips
@@ -191,17 +185,11 @@ def main(player):
         prints the Chip games instructions
     """
     x = 0
-<<<<<<< HEAD
-    print(f"""Game Instructions:\n \nThe board contains chips ranging from 1-10. \nThe goal of the game is to remove as many chips from the board as possible.
-        \nThe computer will roll two dice for you. \nYou then strategically choose two chips from the board that you would like to remove. 
-        \nThe two chips you pick to remove MUST add up to the sum of the dice roll." \nYou cannot choose the same chip multiple times.\n """)
-=======
     with open ("instructions.txt", "r", encoding = "utf-8") as f:
         for line in f:
             print(line)
     #print(f"""Game Instructions: \nThe computer will roll two dice for you, then you will choose two chips from the board. \nThe chips on the board range from 1-10.
 #The chips you choose must add up to the value of the dice. \nYou cannot choose the same chip multiple times""")
->>>>>>> 5536550927b1dac177fb50266990ad5cb8d49cae
     while x != 5:
         dice1 = random.randint(1,6)
         dice2 = random.randint(1,6)
