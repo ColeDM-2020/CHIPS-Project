@@ -118,17 +118,11 @@ class Chips:
             Prints the board or prints a message to pick again
         """
         one, two = self.chips
-        if one in board:
-            board[one] = 0
-            print(board)
-        else:
-            print("Your chip has already been chosen pick again")
-            
-        if two in board:
-            board[two] = 0
-            print(board)
-        else:
-            print("Your chip has already been chosen pick again")
+        
+        board[one] = 0 if one in board else print("Your chip has already been chosen pick again")
+        
+        board[two] = 0 if two in board else print("Your chip has already been chosen pick again")
+    
 
     def game_over(self):
         """Determine whether a round is over
