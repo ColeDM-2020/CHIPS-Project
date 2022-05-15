@@ -32,7 +32,7 @@ class Get_Move:
         self.dice2 (int): Random value assigned to Dice 2. 
     """
     
-    def __init__(self, name, dice1, dice2):
+    def __init__(self, name, dice1 = 0, dice2 = 0):
         """Initializes the name of the player, and the values of dice 1 and
                 and dice 2 roll. 
 
@@ -67,7 +67,7 @@ class Chips:
         self.dice1 = Randomized roll for dice1.
         self.dice2 = Randomized roll for dice2.
     """
-    def __init__(self, player, chips, dice1 = 0, dice2 = 0):
+    def __init__(self, player, chips, dice1, dice2 ):
         """Initialized the player, chips, dice1 and dice2. 
 
         Args:
@@ -132,7 +132,7 @@ class Chips:
         """Determine whether a round is over
         
         Side effects: 
-            Prints is the user won or lose
+            Prints if the user won or lose
         """
         if sum(board[0:11]) > 15:
             print(f"Your score is greater than 15, you lose.")
