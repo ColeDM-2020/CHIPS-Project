@@ -141,7 +141,7 @@ class Chips:
             Prints the users total score
         """
     
-        print(f"Your final score is {sum(board[0:11])}")   
+        print(f"Score: {sum(board[0:11])}")   
     
     def current_board(self, pause=PAUSE):
         """Displays the board in the terminal and pauses momentarily.
@@ -200,8 +200,8 @@ def main(player):
         b = Get_Move(player, dice1, dice2)
         game = Chips(str(player), b.turn(), dice1, dice2)
         game.play()
+        game.score()
         x += 1  
-    game.score()
     game.game_over()
  
 
