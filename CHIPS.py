@@ -154,6 +154,16 @@ class Chips:
                     .replace("<SP>", " "*len(self.names[1])))
         print(template.format(*(board[0::-1]+board[1:])))
         sleep(pause)
+    
+    def __repr__(self):
+        """Produce a formal representation of a dice roll
+        
+        The formal representation will have the form Dice(roll1, roll2)
+        
+        Returns:
+            str: the string representation"""
+        one, two = self.chips
+        return f"Dice({one}, {two})"
         
     def play(self):
         """ Calls the board, play round and the current board function. 
