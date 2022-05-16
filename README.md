@@ -1,6 +1,7 @@
 # CHIPS-Project
 
 Files:
+
 CHIPS.py: This is our main driver file for our prject it will display all of the outputs for the project.
   
 instructions.txt: This file will read in the instructions on how to play the game and it will print it our to the user in the terminal.
@@ -14,21 +15,33 @@ Attribution:
 board setup/Terminal(): Cole
 
 class Get_Move:
+
 init: Brooke
+
 turn: Brooke
 
 class CHIPS:
+
 init: Cole
+
 valid_move: Emma
+
 check_chips: Emma
+
 play_round: Sarah
+
 game_over: Sarah
+
 score: Cole
+
 current_board: Cole
+
 repr: Emma
+
 play: Sarah
 
 main: Brooke
+
 parsargs: Sarah
 
 
